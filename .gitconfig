@@ -1,0 +1,17 @@
+[user]
+	email = shengtsetsai@gmail.com
+	name = tsaist1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[color]
+	ui = true
+[merge]
+    conflictStyle = diff3
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[init]
+    defaultBranch = main
+    
