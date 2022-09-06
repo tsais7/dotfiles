@@ -1,15 +1,17 @@
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/"))
-
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-(package-install-selected-packages)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/") t)
 
-(load "~/.emacs.rc/misc-rc.el")
-(load "~/.emacs.rc/google-c-style.el")
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+   (package-install 'use-package))
+(eval-and-compile
+  (setq use-package-always-ensure t
+	use-package-expand-minimally t))
+(require 'use-package)
 
+;; General Settings
 (menu-bar-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -18,75 +20,56 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; (setq backup-directory-alist '(("." . "~/.emacs_saves")))
+(setq backup-drectory-alist '(("." . "~/.emacs_saves")))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
+(global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 (set-frame-font "Iosevka 20")
 
 (ido-mode 1)
 (ido-everywhere 1)
-(setq ido-enable-flex-matching t)
 
-;; dired
-(with-eval-after-load 'dired
-  (require 'dired-x)
-  (setq dired-omit-files
-        (concat dired-omit-files "\\|^\\..+$"))
-  (setq-default dired-dwim-target t)
-  (setq dired-listing-switches "-alh")
-  )
 
-;; magit
-(setq magit-auto-revert-mode nil)
-(global-set-key (kbd "C-c m s") 'magit-status)
-(global-set-key (kbd "C-c m l") 'magit-log)
-
-;; move-text
-(global-set-key (kbd "M-p") 'move-text-up)
-(global-set-key (kbd "M-n") 'move-text-down)
-
-;; (require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;; which-key
-;; (require 'which-key)
-(which-key-mode)
-
-;; smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-;; Whitespace mode
+;; hooks
 (defun rc/set-up-whitespace-handling ()
   (interactive)
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
-;; c-mode-hook
-(setq-default c-basic-offset 4
-              c-default-style '((java-mode . "java")
-                                (awk-mode . "awk")
-                                (other . "bsd")))
+(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
 
-(add-hook 'c-mode-hook (lambda ()
-                         (interactive)
-                         (c-toggle-comment-style -1)))
-;; (add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
-;; (add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
 
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; use-package
+(use-package magit
+  :bind (("C-x g" . magit-status)
+	 ("C-x C-g" . magit-status)))
 
+(use-package smex
+  :bind (("M-x" . 'smex)
+	 ("M-X" . 'smex-major-mode-commands))
+  :config (smex-initialize))
+
+(use-package zenburn-theme
+  :defer t)
+
+(use-package move-text
+  :bind (("M-p" . move-text-up)
+	 ("M-n" . move-text-down)))
+
+(use-package which-key
+  :config (which-key-mode))
+
+(use-package company
+  :config
+  (global-company-mode t))
+
+
+
+
+  
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,11 +77,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(zenburn))
  '(custom-safe-themes
-   '("fc48cc3bb3c90f7761adf65858921ba3aedba1b223755b5924398c666e78af8b" "03e26cd42c3225e6376d7808c946f7bed6382d795618a82c8f3838cd2097a9cc" default))
- '(frame-brackground-mode 'dark)
- '(nil nil t)
+   '("dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(move-text zenburn-theme multiple-cursors which-key smex magit gruber-darker-theme evil)))
+   '(company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
