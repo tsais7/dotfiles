@@ -3,6 +3,9 @@
 	     '("melpa" . "http://melpa.org/packages/"))
 
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
 
 (load "~/.emacs.rc/misc-rc.el")
 (load "~/.emacs.rc/google-c-style.el")
@@ -15,7 +18,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq backup-directory-alist '(("." . "~/.emacs_saves")))
+;; (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -43,17 +46,18 @@
 (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m l") 'magit-log)
 
-;; move text
+;; move-text
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
 
-(require 'multiple-cursors)
+;; (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(require 'which-key)
+;; which-key
+;; (require 'which-key)
 (which-key-mode)
 
 ;; smex
@@ -62,7 +66,7 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;;; Whitespace mode
+;; Whitespace mode
 (defun rc/set-up-whitespace-handling ()
   (interactive)
   (whitespace-mode 1)
@@ -94,7 +98,7 @@
  '(frame-brackground-mode 'dark)
  '(nil nil t)
  '(package-selected-packages
-   '(moe-theme cmake-mode company move-text comment-tags org-super-agenda zenburn-theme multiple-cursors rainbow-mode which-key lsp-mode smex magit gruber-darker-theme evil)))
+   '(move-text zenburn-theme multiple-cursors which-key smex magit gruber-darker-theme evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
