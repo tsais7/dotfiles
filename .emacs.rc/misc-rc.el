@@ -1,20 +1,13 @@
-(add-to-list 'package-archives
-            '("melpa" . "https://melpa.org/packages/") t)
-
 (require 'ansi-color)
 
-(global-set-key (kbd "C-c p") 'find-file-at-point)
-(global-set-key (kbd "C-c i m") 'imenu)
+(setq default inhibit-splash-screen t
+      make-backup-files nil
+      tab-width 4
+      indent-tabs-mode nil
+      compilation-scroll-output t)
 
-(setq-default inhibit-splash-screen t
-	      make-backup-files nil
-	      tab-width 4
-	      indent-tabs-mode nil
-	      compilation-scroll-output t)
-
-
-;; http://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
-(defun rc/put-file-name-on-clipboard ()
+;; define functions
+(defun rc/put-filename-on-clipboard ()
   "Put the current file name on the clipboard"
   (interactive)
   (let ((filename (rc/buffer-file-name)))

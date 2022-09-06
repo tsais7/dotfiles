@@ -1,7 +1,10 @@
+
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
+
+(load "~/.emacs.rc/misc-rc.el")
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
