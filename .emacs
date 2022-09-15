@@ -1,20 +1,15 @@
-(require 'package)
 (package-initialize)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t)
 
+(load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-   (package-install 'use-package))
+(rc/require 'use-package)
+(require 'use-package)
+
 (eval-and-compile
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
 
-(require 'use-package)
-
-;; General Settings
 (menu-bar-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -30,7 +25,7 @@
 
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
-(set-frame-font "Iosevka 20")
+(set-frame-font "Iosevka 14")
 
 (ido-mode 1)
 (ido-everywhere 1)
@@ -56,11 +51,11 @@
 ;; use-package
 (use-package magit
   :bind (("C-x g" . magit-status)
-	 ("C-x C-g" . magit-status)))
+	     ("C-x C-g" . magit-status)))
 
 (use-package smex
   :bind (("M-x" . 'smex)
-	 ("M-X" . 'smex-major-mode-commands))
+	     ("M-X" . 'smex-major-mode-commands))
   :config (smex-initialize))
 
 (use-package zenburn-theme
@@ -68,14 +63,17 @@
 
 (use-package move-text
   :bind (("M-p" . move-text-up)
-	 ("M-n" . move-text-down)))
+	     ("M-n" . move-text-down)))
 
 (use-package which-key
   :config (which-key-mode))
 
 (use-package company
-  :config
-  (global-company-mode t))
+  :config (global-company-mode t))
+
+(use-package helm
+  :bind (("C-c h" . 'helm-command-prefix))
+
 
 
 
@@ -90,7 +88,7 @@
  '(custom-safe-themes
    '("dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(company which-key move-text zenburn-theme smex magit use-package)))
+   '(helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
