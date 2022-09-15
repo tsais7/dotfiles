@@ -27,6 +27,7 @@
 (setq display-line-numbers-type 'relative)
 (set-frame-font "Iosevka 17")
 
+;; ido
 (ido-mode 1)
 (ido-everywhere 1)
 
