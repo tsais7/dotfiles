@@ -28,6 +28,9 @@
 (set-frame-font "Iosevka 17")
 
 ;; ido
+(use-package ido-completing-read+
+  :config
+  (ido-ubiquitous-mode 1))
 (ido-mode 1)
 (ido-everywhere 1)
 
@@ -73,7 +76,8 @@
   :config (global-company-mode t))
 
 (use-package helm
-  :bind (("C-c h" . 'helm-command-prefix)))
+  :bind (("C-c h" . 'helm-command-prefix))
+  :preface (require 'helm-config))
 
 
 
@@ -89,7 +93,7 @@
  '(custom-safe-themes
    '("dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
