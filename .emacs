@@ -1,4 +1,3 @@
-
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
@@ -12,6 +11,7 @@
 (eval-and-compile
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
+
 (require 'use-package)
 
 ;; General Settings
@@ -35,14 +35,22 @@
 (ido-mode 1)
 (ido-everywhere 1)
 
-
 ;; hooks
+(setq-default c-basic-offset 4
+              c-default-style '((java-mode . "java")
+                                (awk-mode . "awk")
+                                (other . "bsd")))
+          
+(add-hook 'c-mode-hook (lambda ()
+                         (interactive)
+                         (c-toggle-comment-style -1)))
+
 (defun rc/set-up-whitespace-handling ()
   (interactive)
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
-(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
+;; (add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
 
 
 ;; use-package
