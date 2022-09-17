@@ -7,6 +7,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
+set noesckeys
 set number
 set relativenumber
 set ignorecase
@@ -16,7 +17,6 @@ set hlsearch
 set autochdir
 set nowrap
 set backspace=indent,eol,start
-
 colorscheme desert
 
 nnoremap ∆ :m .+1<CR>==

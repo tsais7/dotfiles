@@ -1,6 +1,6 @@
 [user]
-    email = sheng.tse@brightpattern.com
-    name = tsaist1
+	email = shengtsetsai@gmail.com
+	name = ShengTse Tsai
 [color]
     ui = true
 [merge]
@@ -9,3 +9,8 @@
     tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [init]
     defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
