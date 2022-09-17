@@ -10,12 +10,20 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
 
 alias ctags="`brew --prefix`/bin/ctags"
 
+alias gcc='gcc-11'
+alias cc='cc-11'
+alias g++='g++-11'
+alias c++='c++-11'
+
 # LLVM
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -34,4 +42,5 @@ unset __conda_setup
 
 . "$HOME/.cargo/env"
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export BUN_INSTALL="/Users/gir/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
