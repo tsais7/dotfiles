@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export PS1='\u@\h:\[\e[01;32m\]\w\[\e[0m\]\$ '
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export CLICOLOR=1

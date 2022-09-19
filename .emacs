@@ -57,6 +57,7 @@
   :bind (("C-x g" . magit-status)
 	     ("C-x C-g" . magit-status)))
 
+
 (use-package smex
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
@@ -81,7 +82,11 @@
          ("C-x b" . 'helm-mini)))
 
 
-(use-package eglot)
+(use-package eglot
+  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  :hook (('c-mode-hook . 'eglot-ensure)
+         ('c++-mode-hook . 'eglot-ensure)))
+  
 
 (use-package treemacs
   :defer t)
