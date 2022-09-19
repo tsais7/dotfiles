@@ -6,4 +6,4 @@ alias ll="ls -als"
 alias python="python3"
 alias ctags="/usr/local/bin/ctags"
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-
+alias windows="st@laptop-n9qv2dej"
