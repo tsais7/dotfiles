@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export PS1='\u@\h:\[\e[01;32m\]\w\[\e[0m\]\$ '
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export CLICOLOR=1
@@ -5,6 +6,7 @@ export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
 [ -r ~/.bashrc ] && . ~/.bashrc
 
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
 
@@ -44,3 +46,6 @@ unset __conda_setup
 
 export BUN_INSTALL="/Users/gir/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:/opt/homebrew/bin:${PATH}"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
