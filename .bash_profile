@@ -9,12 +9,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
 
-alias ctags="`brew --prefix`/bin/ctags"
-
-alias gcc='gcc-11'
-alias cc='cc-11'
-alias g++='g++-11'
-alias c++='c++-11'
 
 # LLVM
 export CC="/opt/homebrew/opt/llvm/bin/clang"
