@@ -3,8 +3,9 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 export CLICOLOR=1
 
 alias ll="ls -als"
+alias la="ls -a"
 alias python="python3"
-alias ctags="/usr/local/bin/ctags"
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias windows="st@laptop-n9qv2dej"
+alias bp-windows="st@laptop-n9qv2dej"
+
 . "$HOME/.cargo/env"
