@@ -1,7 +1,6 @@
 export PS1='\u@\h:\[\e[01;32m\]\w\[\e[0m\]\$ '
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export CLICOLOR=1
-export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
 [ -r ~/.bashrc ] && . ~/.bashrc
 PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
