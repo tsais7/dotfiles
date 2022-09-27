@@ -63,6 +63,9 @@
 	     ("M-X" . 'smex-major-mode-commands))
   :config (smex-initialize))
 
+(use-package rg
+  :defer t)
+
 (use-package zenburn-theme
   :defer t)
 
@@ -104,7 +107,7 @@
  '(custom-safe-themes
    '("dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
