@@ -3,7 +3,7 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 export CLICOLOR=1
 
 [ -r ~/.bashrc ] && . ~/.bashrc
-PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
