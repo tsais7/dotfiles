@@ -17,6 +17,7 @@ set hlsearch
 set autochdir
 set nowrap
 set backspace=indent,eol,start
+set statusline+=%F
 colorscheme desertEx
 
 nnoremap ∆ :m .+1<CR>==

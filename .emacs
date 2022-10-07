@@ -87,18 +87,24 @@
 
 
 (use-package eglot
-  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
-(add-hook 'c++-mode-hook 'eglot-ensure)
-(add-hook 'c-mode-hook 'eglot-ensure)
-
+  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-hook 'c++-mode-hook 'eglot-ensure)
+  (add-hook 'c-mode-hook 'eglot-ensure))
 
 
 (use-package treemacs
   :defer t)
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package cmake-mode
+  :ensure t)
+
 (rc/require 'evil)
 (rc/require 'cmake-ide)
-
 
 (require 'dired-x)
 (setq dired-omit-files
@@ -116,7 +122,7 @@
  '(custom-safe-themes
    '("dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
