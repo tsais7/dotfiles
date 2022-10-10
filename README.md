@@ -3,6 +3,7 @@
 - https://clangd.llvm.org/installation
 - https://formulae.brew.sh/formula/bear#default
 - https://www.gnu.org/software/global/
+- https://github.com/helix-editor/helix
 
 #### brew packages
 - iterm2
