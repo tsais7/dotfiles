@@ -40,6 +40,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:/opt/homebrew/bin:${PATH}"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-export WORKSPACE="/Users/sheng.tse/BP/ServicePattern"
-export BUILD_DIR="/Users/sheng.tse/BP/ServicePattern"
+export WORKSPACE="/Users/sheng.tse/ServicePattern"
+export BUILD_DIR="/Users/sheng.tse/ServicePattern"
 export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
+
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
