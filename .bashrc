@@ -6,6 +6,8 @@ alias ll="ls -als"
 alias d="ls -alh"
 alias a="ls -a"
 alias mkcd="mkdir $1 && cd $1"
+alias cds="cd /Users/Shared"
+alias x="hx"
 
 alias python="python3"
 alias pip="pip3"
