@@ -12,6 +12,8 @@
 - font-iosevka
 - meld
 - llvm
+- git-lfs
+- helix
 
 #### System Preferences
 - defaults write -g ApplePressAndHoldEnabled -bool false
