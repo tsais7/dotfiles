@@ -51,11 +51,9 @@
 
 ;; (add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
 
-
 ;; use-package
 (use-package magit
-  :bind (("C-x g" . magit-status)
-	     ("C-x C-g" . magit-status))
+  :bind (("C-x g" . magit-status))
   :config (setq magit-auto-rever-mode nil))
 
 
