@@ -5,7 +5,7 @@ export CLICOLOR=1
 alias ll="ls -als"
 alias d="ls -alh"
 alias a="ls -a"
-alias mkcd="mkdir $1 && cd $1"
+
 alias cds="cd /Users/Shared"
 alias x="hx"
 
@@ -16,5 +16,6 @@ alias config="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias bp-windows="st@laptop-n9qv2dej"
 alias dlist="launchctl list | rg brightpattern"
 alias fd="lipo -detailed_info"
+alias mkre="make -j 2 USE_SSL=no VOCAL_COMPILE_TYPE=opt resiprocate"
 
 . "$HOME/.cargo/env"

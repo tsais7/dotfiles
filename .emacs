@@ -53,9 +53,8 @@
 
 ;; use-package
 (use-package magit
-  :bind (("C-x g" . magit-status))
-  :config (setq magit-auto-rever-mode nil))
-
+  :bind (("C-x g" . magit-status)))
+(setq magit-auto-rever-mode nil)
 
 (use-package smex
   :bind (("M-x" . 'smex)

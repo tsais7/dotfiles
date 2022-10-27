@@ -40,8 +40,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:/opt/homebrew/bin:${PATH}"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-export WORKSPACE="/Users/sheng.tse/ServicePattern"
-export BUILD_DIR="/Users/sheng.tse/ServicePattern"
 export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
 export LIBRARY_PATH="/opt/local/lib"
 
