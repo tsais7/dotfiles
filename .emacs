@@ -34,7 +34,6 @@
 (ido-mode 1)
 (ido-everywhere 1)
 
-;; hooks
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
                                 (awk-mode . "awk")
@@ -49,12 +48,7 @@
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
-;; (add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
-
 ;; use-package
-(use-package magit
-  :bind (("C-x g" . magit-status)))
-(setq magit-auto-rever-mode nil)
 
 (use-package smex
   :bind (("M-x" . 'smex)
@@ -100,8 +94,13 @@
 (use-package cmake-mode
   :ensure t)
 
+(rc/require 'magit)
+(setq magit-auto-revert-mode nil)
+
 (rc/require 'evil)
+
 (rc/require 'cmake-ide)
+
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
