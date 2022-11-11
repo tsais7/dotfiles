@@ -1,4 +1,5 @@
 # dotfiles
+https://www.atlassian.com/git/tutorials/dotfiles
 ## dev tools (macOS)
 - https://clangd.llvm.org/installation
 - https://formulae.brew.sh/formula/bear#default
