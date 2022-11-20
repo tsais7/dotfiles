@@ -41,7 +41,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:/opt/homebrew/bin:${PATH}"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
+# export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
 export LIBRARY_PATH="/opt/local/lib"
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
