@@ -33,6 +33,7 @@
   (ido-ubiquitous-mode 1))
 (ido-mode 1)
 (ido-everywhere 1)
+(setq ido-enable-flex-matching t)
 
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -59,6 +60,9 @@
   :defer t)
 
 (use-package zenburn-theme
+  :defer t)
+
+(use-package gruber-darker-theme
   :defer t)
 
 (use-package move-text
@@ -121,9 +125,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(zenburn))
  '(custom-safe-themes
-   '("2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
+   '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" "2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
-   '(multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
