@@ -27,7 +27,6 @@
 (setq display-line-numbers-type 'relative)
 (set-frame-font "Iosevka 17")
 
-
 (use-package ido-completing-read+
   :config
   (ido-ubiquitous-mode 1))
@@ -110,11 +109,10 @@
 (setq rust-format-on-save t)
 
 (rc/require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines) 
+(global-set-key (kbd "C->") 'mc/mark-next-like-this) 
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this) 
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this) 
 
 (rc/require 'expand-region)
 (require 'expand-region)
