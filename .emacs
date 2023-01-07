@@ -10,6 +10,7 @@
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
 
+
 (menu-bar-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
