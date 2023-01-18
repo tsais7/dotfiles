@@ -16,5 +16,6 @@ alias mkre="make -j 2 USE_SSL=no VOCAL_COMPILE_TYPE=opt resiprocate"
 
 alias bmac13="ssh sheng.tse@build-mac13.pl.bugfocus.com"
 alias baja="ssh sheng.tse@baja.pl.bugfocus.com"
+alias rg="~/Downloads/ripgrep-13.0.0-x86_64-pc-windows-gnu/ripgrep-13.0.0-x86_64-pc-windows-gnu/rg.exe"
 
 . "$HOME/.cargo/env"
