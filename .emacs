@@ -26,7 +26,7 @@
 
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
-(set-frame-font "Iosevka 17")
+(set-frame-font "Iosevka 14")
 
 (use-package ido-completing-read+
   :config
@@ -74,7 +74,7 @@
   :config (global-company-mode t))
 
 (use-package helm
-  :preface (require 'helm-config)
+;;  :preface (require 'helm-config)
   :bind (("C-c h" . 'helm-command-prefix)
          ("C-x b" . 'helm-mini)))
 
