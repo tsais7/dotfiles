@@ -44,8 +44,10 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
 # export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
 export LIBRARY_PATH="/opt/local/lib"
 
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+export EMSDK_QUIET=1
+source "/Users/st/Repo/emsdk/emsdk_env.sh"
