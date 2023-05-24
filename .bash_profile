@@ -9,12 +9,12 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
 
 # LLVM
-# export CC="/opt/homebrew/opt/llvm/bin/clang"
-# export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
@@ -49,5 +49,3 @@ export LIBRARY_PATH="/opt/local/lib"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-export EMSDK_QUIET=1
-source "/Users/st/Repo/emsdk/emsdk_env.sh"

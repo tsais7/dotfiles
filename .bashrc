@@ -16,8 +16,6 @@ alias mkre="make -j 2 USE_SSL=no VOCAL_COMPILE_TYPE=opt resiprocate"
 
 alias bmac13="ssh sheng.tse@build-mac13.pl.bugfocus.com"
 alias baja="ssh sheng.tse@baja.pl.bugfocus.com"
-alias vm1="ssh root@sheng-vm1"
-alias vm2="ssh root@sheng-vm2"
-alias vm3="ssh root@sheng-vm3"
+alias st="/Applications/Sublime \Text.App"
 
 . "$HOME/.cargo/env"
