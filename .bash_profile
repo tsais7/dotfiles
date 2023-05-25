@@ -49,3 +49,5 @@ export LIBRARY_PATH="/opt/local/lib"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+
+[[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
