@@ -3,6 +3,7 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
+
 (rc/require 'use-package)
 (require 'use-package)
 
@@ -26,7 +27,10 @@
 
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
-(set-frame-font "Iosevka 17")
+
+(set-frame-font "Iosevka 16")
+(add-to-list 'default-frame-alist '(font . "Iosevka 16"))
+
 
 (use-package ido-completing-read+
   :config
