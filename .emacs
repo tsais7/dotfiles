@@ -2,7 +2,7 @@
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
-
+(add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
 
 (rc/require 'use-package)
 (require 'use-package)
@@ -17,6 +17,7 @@
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
+(pixel-scroll-precision-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -25,12 +26,16 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+(defun rc/get-default-font ()
+  (cond
+   ((eq system-type 'windows-nt) "Consolas-13")
+   ((eq system-type 'gnu/linux) "Iosevka-16")))
+
+(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
+
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
-
-(set-frame-font "Iosevka 16")
-(add-to-list 'default-frame-alist '(font . "Iosevka 16"))
-
+;;(set-frame-font "Iosevka 17")
 
 (use-package ido-completing-read+
   :config
@@ -58,7 +63,6 @@
 
 (use-package gruber-darker-theme
   :defer t)
-
 (use-package smex
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
