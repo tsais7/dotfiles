@@ -25,17 +25,18 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(set-frame-font "Iosevka 17")
 
 (defun rc/get-default-font ()
-  (cond
-   ((eq system-type 'windows-nt) "Consolas-13")
-   ((eq system-type 'gnu/linux) "Iosevka-16")))
+   (cond
+    ((eq system-type 'windows-nt) "Consolas-13")
+    ((eq system-type 'gnu/linux) "Iosevka-16")))
 
-(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
+;(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
-;;(set-frame-font "Iosevka 17")
+
 
 (use-package ido-completing-read+
   :config
