@@ -2,7 +2,7 @@ export PS1='\u@\h:\[\e[01;32m\]\w\[\e[0m\]\$ '
 export LSCOLORS=Exfxcxdxbxegedabagacad
 export CLICOLOR=1
 
-alias l="ls"
+alias l="ls -a"
 alias ll="ls -als"
 alias d="ls -alh"
 alias a="ls -a"

@@ -7,14 +7,6 @@ PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/opencv/lib/pkgconfig"
-
-# LLVM
-# export CC="/opt/homebrew/opt/llvm/bin/clang"
-# export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
  
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
@@ -39,16 +31,10 @@ unset __conda_setup
 export BUN_INSTALL="/Users/gir/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:/opt/homebrew/bin:${PATH}"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-# export DYLD_LIBRARY_PATH="/Users/sheng.tse/ServicePattern/ThirdParty/librtc2"
-export LIBRARY_PATH="/opt/local/lib"
-
-# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-
 [[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
+
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
