@@ -51,3 +51,4 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 
 [[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
