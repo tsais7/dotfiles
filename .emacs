@@ -2,7 +2,13 @@
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
-(add-to-list 'package-archives '("gnu-devel" . "https://elpa.gnu.org/devel/"))
+
+(defun rc/get-default-font ()
+   (cond
+    ((eq system-type 'windows-nt) "Consolas-13")
+    ((eq system-type 'gnu/linux) "Iosevka-16")))
+
+(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
 
 (rc/require 'use-package)
 (require 'use-package)
@@ -11,32 +17,19 @@
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
 
+(setq visible-bell 1)
 
-(menu-bar-mode 1)
 (tool-bar-mode 0)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
 (pixel-scroll-precision-mode 1)
-
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(setq backup-drectory-alist '(("." . "~/.emacs_saves")))
-
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-(set-frame-font "Iosevka 17")
-
-(defun rc/get-default-font ()
-   (cond
-    ((eq system-type 'windows-nt) "Consolas-13")
-    ((eq system-type 'gnu/linux) "Iosevka-16")))
-
-;(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
-
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
 
+(setq backup-drectory-alist '(("." . "~/.emacs_saves")))
 
 (use-package ido-completing-read+
   :config
@@ -52,7 +45,19 @@
 (add-hook 'c-mode-hook (lambda ()
                          (interactive)
                          (c-toggle-comment-style -1)))
+(c-add-style "my-style"
+             '("stroustrup"
+               (indent-tabs-mode . nil)
+               (c-basic-offset . 4)
+               (c-offset-alist . ((inline-open . 0)
+                                  (brace-list-open . 0)
+                                  (statement-case-open . +)))))
+(defun my-c++-mode-hook ()
+  (c-set-style "my-style")
+  (auto-fill-mode)
+  (c-toggle-auto-hungry-state 1))
 
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
 (defun rc/set-up-whitespace-handling ()
   (interactive)
   (whitespace-mode 1)
@@ -64,6 +69,7 @@
 
 (use-package gruber-darker-theme
   :defer t)
+
 (use-package smex
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
@@ -125,6 +131,7 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this) 
 
 (rc/require 'expand-region)
+
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -147,7 +154,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(zenburn))
  '(custom-safe-themes
-   '("f74e8d46790f3e07fbb4a2c5dafe2ade0d8f5abc9c203cd1c29c7d5110a85230" "bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" "2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
+   '("ba4ab079778624e2eadbdc5d9345e6ada531dc3febeb24d257e6d31d5ed02577" "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "f74e8d46790f3e07fbb4a2c5dafe2ade0d8f5abc9c203cd1c29c7d5110a85230" "bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" "2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(package-selected-packages
    '(yasnippet-snippets rust-mode typescript-mode gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
