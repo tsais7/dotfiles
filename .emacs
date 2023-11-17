@@ -31,6 +31,10 @@
 
 (setq backup-drectory-alist '(("." . "~/.emacs_saves")))
 
+(require 'treesit)
+(treesit-available-p)
+
+
 (use-package ido-completing-read+
   :config
   (ido-ubiquitous-mode 1))
@@ -100,9 +104,6 @@
   (add-hook 'c++-mode-hook 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure))
 
-(use-package treemacs
-  :defer t)
-
 (use-package markdown-mode
   :defer t
   :mode ("README\\.md\\'" . gfm-mode)
@@ -123,8 +124,6 @@
 (rc/require 'rust-mode
             'typescript-mode
             'cmake-mode)
-
-
 
 (setq rust-format-on-save t)
 
@@ -151,23 +150,6 @@
 (setq dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 
-;; ;; OCaml
-;; ;; automatically activate caml-mode when eidting .ml, .mli, .mly, .mll
-;; (add-to-list 'auto-mode-alist '("\\.ml[iyl]?$" . caml-mode))
-
-;; ;; automatically activate merlin-mode when editing caml code
-;; (add-hook 'caml-mode-hook 'merlin-mode t)
-
-;; (require 'caml)
-;; (require 'caml-font)
-;; (require 'merlin)
-;; (require 'ocp-indent)
-
-;; ;; automatically activate caml-mode when eidting .ml, .mli, .mly, .mll
-;; (add-to-list 'auto-mode-alist '("\\.ml[iyl]?$" . caml-mode))
-
-;; ;; automatically activate merlin-mode when editing caml code
-;; (add-hook 'caml-mode-hook 'merlin-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
