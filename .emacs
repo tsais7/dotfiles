@@ -3,12 +3,7 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(defun rc/get-default-font ()
-   (cond
-    ((eq system-type 'windows-nt) "Consolas-13")
-    ((eq system-type 'gnu/linux) "Iosevka-16")))
-
-(add-to-list 'default-frame-alist `(font . ,(rc/get-default-font)))
+(set-frame-font "Iosevka Term 16" nil t)
 
 (rc/require 'use-package)
 (require 'use-package)
@@ -17,10 +12,10 @@
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
 
-(setq visible-bell 1)
+
 
 (tool-bar-mode 0)
-(menu-bar-mode 0)
+(menu-bar-mode 1)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
