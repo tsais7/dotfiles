@@ -12,10 +12,8 @@
   (setq use-package-always-ensure t
 	use-package-expand-minimally t))
 
-
-
 (tool-bar-mode 0)
-(menu-bar-mode 1)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
@@ -118,7 +116,8 @@
 
 (rc/require 'rust-mode
             'typescript-mode
-            'cmake-mode)
+            'cmake-mode
+            'go-mode)
 
 (setq rust-format-on-save t)
 
