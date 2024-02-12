@@ -3,7 +3,7 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(set-frame-font "Iosevka Term 16" nil t)
+(set-frame-font "Iosevka Term 18" nil t)
 
 (rc/require 'use-package)
 (require 'use-package)
@@ -21,6 +21,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
+(setq visible-bell 1)
 
 (setq backup-drectory-alist '(("." . "~/.emacs_saves")))
 
