@@ -3,7 +3,7 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(set-frame-font "Iosevka Term 18" nil t)
+(set-frame-font "Iosevka Term 20" nil t)
 
 (rc/require 'use-package)
 (require 'use-package)
