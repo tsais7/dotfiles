@@ -42,3 +42,9 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # opam configuration
 test -r /root/.opam/opam-init/init.sh && . /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+source "/home/st/repos/emsdk/emsdk_env.sh"
+
+export GOPATH="$(go env GOPATH)"
+export PATH="${PATH}:${GOPATH}/bin"
+
+
