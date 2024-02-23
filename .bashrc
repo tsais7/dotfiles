@@ -6,13 +6,12 @@ alias l="ls -a"
 alias ll="ls -als"
 alias d="ls -alh"
 alias a="ls -a"
-alias x="hx"
 
 alias python="python3"
 alias pip="pip3"
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
-alias cdr="cd my-repos"
+
 alias fd="lipo -detailed_info"
 
 alias st="/Applications/Sublime \Text.App"
