@@ -3,7 +3,7 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(set-frame-font "Iosevka Term 20" nil t)
+(set-frame-font "Iosevka Term 24" nil t)
 
 (rc/require 'use-package)
 (require 'use-package)
@@ -28,7 +28,6 @@
 (require 'treesit)
 (treesit-available-p)
 
-
 (use-package ido-completing-read+
   :config
   (ido-ubiquitous-mode 1))
@@ -43,20 +42,6 @@
 (add-hook 'c-mode-hook (lambda ()
                          (interactive)
                          (c-toggle-comment-style -1)))
-(c-add-style "my-style"
-             '("stroustrup"
-               (indent-tabs-mode . nil)
-               (c-basic-offset . 4)
-               (c-offset-alist . ((inline-open . 0)
-                                  (brace-list-open . 0)
-                                  (statement-case-open . +)))))
-(defun my-c++-mode-hook ()
-  (c-set-style "my-style")
-  (auto-fill-mode)
-  (c-toggle-auto-hungry-state 1))
-
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
-(add-hook 'c-mode-hook 'my-c++-mode-hook)
 
 (defun rc/set-up-whitespace-handling ()
   (interactive)
