@@ -38,28 +38,17 @@
 (ido-mode 1)
 (ido-everywhere 1)
 
-(setq-default c-basic-offset 4
-              c-default-style '((java-mode . "java")
-                                (awk-mode . "awk")
-                                (other . "bsd")))
-          
-(add-hook 'c-mode-hook (lambda ()
-                         (interactive)
-                         (c-toggle-comment-style -1)))
-(c-add-style "my-style"
-             '("stroustrup"
-               (indent-tabs-mode . nil)
+(c-add-style "ffmpeg"
+             '("k&r"
                (c-basic-offset . 4)
-               (c-offset-alist . ((inline-open . 0)
-                                  (brace-list-open . 0)
-                                  (statement-case-open . +)))))
-(defun my-c++-mode-hook ()
-  (c-set-style "my-style")
-  (auto-fill-mode)
-  (c-toggle-auto-hungry-state 1))
+               (indent-tabs-mode . nil)
+               (show-trailing-whitespace . t)
+               (c-offset-alist
+                 (statement-cont . (c-lineup-assignments +)))
+               )
+             )
 
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
-(add-hook 'c-mode-hook 'my-c++-mode-hook)
+(setq c-default-style "ffmpeg")
 
 (defun rc/set-up-whitespace-handling ()
   (interactive)
