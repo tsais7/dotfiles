@@ -16,5 +16,9 @@ alias fd="lipo -detailed_info"
 
 alias st="/Applications/Sublime \Text.App"
 
-[ -f "/Users/gir/.ghcup/env" ] && source "/Users/gir/.ghcup/env" # ghcup-env
+alias jupy="~/.local/bin/jupyter-notebook --no-browser"
+
 . "$HOME/.cargo/env"
+
+
+[ -f "/home/st/.ghcup/env" ] && . "/home/st/.ghcup/env" # ghcup-env

@@ -47,4 +47,6 @@ source "/home/st/repos/emsdk/emsdk_env.sh"
 export GOPATH="$(go env GOPATH)"
 export PATH="${PATH}:${GOPATH}/bin"
 
+export PATH=$PATH:~/.local/bin
+
 
