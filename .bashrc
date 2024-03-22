@@ -21,4 +21,5 @@ alias jupy="~/.local/bin/jupyter-notebook --no-browser"
 . "$HOME/.cargo/env"
 
 
-[ -f "/home/st/.ghcup/env" ] && . "/home/st/.ghcup/env" # ghcup-env
+
+[ -f "/Users/gir/.ghcup/env" ] && . "/Users/gir/.ghcup/env" # ghcup-env

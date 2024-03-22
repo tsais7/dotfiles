@@ -48,3 +48,4 @@ export PATH=$PATH:~/.local/bin
 
 # opam configuration
 test -r /home/st/.opam/opam-init/init.sh && . /home/st/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
