@@ -1,4 +1,5 @@
 [ -r ~/.bashrc ] && . ~/.bashrc
+[[ $TMUX != "" ]] && export TERM="screen-256color"
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 

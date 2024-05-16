@@ -21,6 +21,7 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 (pixel-scroll-precision-mode 1)
+(xterm-mouse-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
