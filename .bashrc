@@ -13,7 +13,6 @@ alias pip="pip3"
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 alias fd="lipo -detailed_info"
-alias st="/Applications/Sublime \Text.App"
 
 [ -f "/Users/gir/.ghcup/env" ] && . "/Users/gir/.ghcup/env" # ghcup-env
 
@@ -32,3 +31,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
