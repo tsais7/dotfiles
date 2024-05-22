@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (package-initialize)
 
 (load "~/.emacs.rc/rc.el")
@@ -7,9 +9,6 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-
-(rc/require 'use-package)
-(require 'use-package)
 
 (eval-and-compile
   (setq use-package-always-ensure t
@@ -108,12 +107,11 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable))
   
-(rc/require 'magit)
-(setq magit-auto-revert-mode nil)
+(use-package magit
+  :config (setq magit-auto-revert-mode nil))
 
-(rc/require 'evil)
-
-(rc/require 'cmake-ide)
+(use-package evil
+  :defer t)
 
 (rc/require 'rust-mode
             'typescript-mode
