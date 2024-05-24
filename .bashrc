@@ -12,8 +12,6 @@ alias pip="pip3"
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
-alias fd="lipo -detailed_info"
-
 [ -f "/Users/gir/.ghcup/env" ] && . "/Users/gir/.ghcup/env" # ghcup-env
 
 # >>> conda initialize >>>
