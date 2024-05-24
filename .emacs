@@ -1,11 +1,13 @@
-;; -*- lexical-binding: t; -*-
-
 (package-initialize)
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-(set-frame-font "Iosevka Term 20" nil t)
+(defun set-default-font ()
+  (if (member "Iosevka" (font-family-list))
+      (set-frame-font "Iosevka Term 20" nil t)
+    (message "Font not found, using default")))
+(add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
@@ -23,19 +25,11 @@
 (xterm-mouse-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-display-line-numbers-mode)
+
 (setq display-line-numbers-type 'relative)
 (setq visible-bell 1)
-
 (setq backup-drectory-alist '(("." . "~/.emacs_saves")))
-
-(require 'treesit)
-(treesit-available-p)
-
-(use-package ido-completing-read+
-  :config
-  (ido-ubiquitous-mode 1))
-(ido-mode 1)
-(ido-everywhere 1)
+(setq rust-format-on-save t)
 
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -50,6 +44,18 @@
   (interactive)
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
+
+(use-package ido-completing-read+
+  :ensure t
+  :config
+  (ido-ubiquitous-mode 1)
+  (ido-mode 1)
+  (ido-everywhere 1))
 
 (use-package zenburn-theme
   :defer t)
@@ -110,26 +116,25 @@
 (use-package magit
   :config (setq magit-auto-revert-mode nil))
 
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
 (use-package evil
   :defer t)
 
 (rc/require 'rust-mode
             'typescript-mode
             'cmake-mode
-            'go-mode
-            )
+            'go-mode)
 
 ;; Haskell
 (rc/require 'haskell-mode)
 (setq haskell-process-type 'cabal-new-repl)
 (setq haskell-process-log t)
-
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'hindent-mode)
-
-(setq rust-format-on-save t)
 
 (rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -137,15 +142,9 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this) 
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this) 
 
-(rc/require 'expand-region)
-
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
 ;; yasnippet
 (rc/require 'yasnippet-snippets)
 (rc/require 'yasnippet)
-(require 'yasnippet)
 (yas-global-mode 1)
 
 (require 'dired-x)
@@ -172,5 +171,5 @@
  ;; If there is more than one, they won't work right.
  )
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
-(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+;;(require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
