@@ -15,10 +15,6 @@ export PATH="${PATH}:${GOPATH}/bin"
 
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
-# opam configuration
-test -r /home/st/.opam/opam-init/init.sh && . /home/st/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/gir/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
