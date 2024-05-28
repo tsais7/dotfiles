@@ -7,13 +7,12 @@
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
-                (set-face-attribute 'default nil :font "Iosevka 14")
+                (set-face-attribute 'default nil :font "Iosevka Fixed 14")
                 (set-frame-parameter frame 'fullscreen 'maximized))))
               
-
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka 14" nil t)))
+      (set-frame-font "Iosevka Fixed 14" nil t)))
     
 (add-hook 'after-init-hook 'set-default-font)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -28,10 +27,12 @@
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
-(pixel-scroll-precision-mode 1)
 (xterm-mouse-mode 1)
+
+(pixel-scroll-precision-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-display-line-numbers-mode)
+(global-set-key [down-mouse-3] 'imenu)
 
 (setq display-line-numbers-type 'relative)
 (setq visible-bell 1)
