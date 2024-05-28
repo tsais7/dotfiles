@@ -3,27 +3,25 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-;; daemon
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (set-face-attribute 'default nil :font "Iosevka Fixed 14")
-                (set-frame-parameter frame 'fullscreen 'maximized))))
-              
+
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
       (set-frame-font "Iosevka Fixed 14" nil t)))
-    
+
+(defun toggle-fs ()
+  (interactive)
+  (toggle-frame-fullscreen))
+
 (add-hook 'after-init-hook 'set-default-font)
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(add-to-list 'default-frame-alist '(fullscreen . fullheight))
+(add-to-list 'default-frame-alist '(fullscreen . fullboth))
+(add-to-list 'initial-frame-alist '(fullscreen . fullboth))
 
 (eval-and-compile
   (setq use-package-always-ensure t
-	use-package-expand-minimally t))
+	    use-package-expand-minimally t))
 
 (tool-bar-mode 0)
-(menu-bar-mode 0)
+(menu-bar-mode 1)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
@@ -94,10 +92,11 @@
          ("C-x b" . 'helm-mini)))
 
 (use-package eglot
-  :config (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-  (add-hook 'c++-mode-hook 'eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-hook 'c-mode-hook 'eglot-ensure)
-  (add-hook 'g-mode-hook 'eglot-ensure))
+  (add-hook 'c++-mode-hook 'eglot-ensure))
+
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,

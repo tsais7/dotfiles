@@ -6,7 +6,6 @@
       indent-tabs-mode nil
       compilation-scroll-output t)
 
-;; define functions
 (defun rc/put-filename-on-clipboard ()
   "Put the current file name on the clipboard"
   (interactive)
