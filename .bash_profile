@@ -1,37 +1,40 @@
 [ -r ~/.bashrc ] && . ~/.bashrc
+
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+if [[ "$(uname)" == "Darwin" ]]; then
+    [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+    export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+    export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
-export GOPATH="$(go env GOPATH)"
-export PATH="${PATH}:${GOPATH}/bin"
-
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+    export GOPATH="$(go env GOPATH)"
+    export PATH="${PATH}:${GOPATH}/bin"
+    
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
+    
+    
+    source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+    source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+    chruby ruby-3.1.3
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/gir/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/gir/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/gir/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/gir/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.3
 
 . "$HOME/.cargo/env"

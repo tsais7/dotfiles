@@ -6,7 +6,7 @@
 
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Fixed 14" nil t)))
+      (set-frame-font "Iosevka Fixed 15" nil t)))
 
 (defun toggle-fs ()
   (interactive)

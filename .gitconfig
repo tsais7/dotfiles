@@ -34,3 +34,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	path = /usr/bin/meld
