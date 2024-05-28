@@ -6,6 +6,18 @@
       indent-tabs-mode nil
       compilation-scroll-output t)
 
+(defun my-frame-settings (frame)
+  (with-selected-frame frame
+    (set-frame-font "Iosevka Fixed 14")
+    (set-frame-size frame 80 40)))
+
+(add-hook 'after-make-frame-functions 'my-frame-settings)
+
+(when (daemonp)
+  (add-hook 'after-init-hook
+            (lambda ()
+              (my-frame-settings (selected-frame)))))
+
 (defun rc/put-filename-on-clipboard ()
   "Put the current file name on the clipboard"
   (interactive)

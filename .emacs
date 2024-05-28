@@ -3,14 +3,9 @@
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 
-
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
       (set-frame-font "Iosevka Fixed 15" nil t)))
-
-(defun toggle-fs ()
-  (interactive)
-  (toggle-frame-fullscreen))
 
 (add-hook 'after-init-hook 'set-default-font)
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
@@ -21,7 +16,7 @@
 	    use-package-expand-minimally t))
 
 (tool-bar-mode 0)
-(menu-bar-mode 1)
+(menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
