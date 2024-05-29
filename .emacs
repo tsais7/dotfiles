@@ -5,32 +5,28 @@
 
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Fixed 15" nil t)))
+      (set-frame-font "Iosevka Fixed 14" nil t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
 
-(eval-and-compile
-  (setq use-package-always-ensure t
-	    use-package-expand-minimally t))
-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(column-number-mode 1)
 (show-paren-mode 1)
 (xterm-mouse-mode 1)
-
+(column-number-mode 1)
 (pixel-scroll-precision-mode 1)
+
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (global-display-line-numbers-mode)
 (global-set-key [down-mouse-3] 'imenu)
 
+(setq visible-bell 0)
 (setq display-line-numbers-type 'relative)
-(setq visible-bell 1)
 (setq backup-drectory-alist '(("." . "~/.emacs_saves")))
-(setq rust-format-on-save t)
 
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -41,43 +37,30 @@
                          (interactive)
                          (c-toggle-comment-style -1)))
 
-(defun rc/set-up-whitespace-handling ()
+(require 'dired-x)
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+(setq dired-dwim-target t)
+(setq dired-listing-switches "-alh")
+
+(defun rc/whitespace-handling ()
   (interactive)
   (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
-(use-package treesit-auto
-  :ensure t
-  :config
-  (global-treesit-auto-mode))
-
-(use-package ido-completing-read+
-  :ensure t
-  :config
-  (ido-ubiquitous-mode 1)
-  (ido-mode 1)
-  (ido-everywhere 1))
-
-(use-package zenburn-theme
-  :defer t)
-
-(use-package gruber-darker-theme
-  :defer t)
+(eval-and-compile
+  (setq use-package-always-ensure t
+	    use-package-expand-minimally t))
 
 (use-package smex
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
   :config (smex-initialize))
 
-(use-package rg
-  :defer t)
-
-(use-package move-text
-  :bind (("M-p" . move-text-up)
-	     ("M-n" . move-text-down)))
-
-(use-package which-key
-  :config (which-key-mode))
+(use-package ido-completing-read+
+  :config
+  (ido-ubiquitous-mode 1)
+  (ido-mode 1)
+  (ido-everywhere 1))
 
 (use-package company
   :config (global-company-mode t))
@@ -86,12 +69,37 @@
   :bind (("C-c h" . 'helm-command-prefix)
          ("C-x b" . 'helm-mini)))
 
+(use-package move-text
+  :bind (("M-p" . move-text-up)
+	     ("M-n" . move-text-down)))
+
+(use-package which-key
+  :config (which-key-mode))
+
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)))
+
+(use-package yasnippet-snippets)
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package magit
+  :config (setq magit-auto-revert-mode nil))
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+(use-package rg)
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-hook 'c-mode-hook 'eglot-ensure)
   (add-hook 'c++-mode-hook 'eglot-ensure))
-
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -114,47 +122,37 @@
   :defer t
   :init
   (advice-add 'python-mode :before 'elpy-enable))
-  
-(use-package magit
-  :config (setq magit-auto-revert-mode nil))
-
-(use-package expand-region
-  :bind ("C-=" . er/expand-region))
 
 (use-package evil
   :defer t)
 
-(rc/require 'rust-mode
-            'typescript-mode
-            'cmake-mode
-            'go-mode)
+(use-package rust-mode
+  :defer t)
 
-;; Haskell
-(rc/require 'haskell-mode)
-(setq haskell-process-type 'cabal-new-repl)
-(setq haskell-process-log t)
-(add-hook 'haskell-mode-hook 'haskell-indent-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'hindent-mode)
+(use-package typescript-mode
+  :defer t)
 
-(rc/require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this) 
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this) 
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this) 
+(use-package cmake-mode
+  :defer t)
 
-;; yasnippet
-(rc/require 'yasnippet-snippets)
-(rc/require 'yasnippet)
-(yas-global-mode 1)
+(use-package go-mode
+  :defer t)
 
-(require 'dired-x)
-(setq dired-omit-files
-      (concat dired-omit-files "\\|^\\..+$"))
-(setq dired-dwim-target t)
-(setq dired-listing-switches "-alh")
+(use-package haskell-mode
+  :defer t
+  :hook ((haskell-mode . haskell-indent-mode)
+         (haskell-mode . interactive-haskell-mode)
+         (haskell-mode . haskell-doc-mode)
+         (haskell-mode . hindent-mode))
+  :config
+  (setq haskell-process-type 'cabal-new-repl)
+  (setq haskell-process-log t))
 
+(use-package zenburn-theme
+  :defer t)
+
+(use-package gruber-darker-theme
+  :defer t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
