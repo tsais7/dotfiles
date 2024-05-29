@@ -37,15 +37,19 @@
                          (interactive)
                          (c-toggle-comment-style -1)))
 
+(defun rc/whitespace-handling ()
+  (interactive)
+  (whitespace-mode 1)
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
 (require 'dired-x)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 (setq dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 
-(defun rc/whitespace-handling ()
-  (interactive)
-  (whitespace-mode 1)
-  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+(rc/require 'yasnippet-snippets)
+(rc/require 'yasnippet)
+(yas-global-mode 1)
 
 (eval-and-compile
   (setq use-package-always-ensure t
@@ -82,11 +86,6 @@
          ("C-<" . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
-(use-package yasnippet-snippets)
-(use-package yasnippet
-  :config
-  (yas-global-mode 1))
-
 (use-package magit
   :config (setq magit-auto-revert-mode nil))
 
@@ -97,9 +96,9 @@
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-  (add-hook 'c-mode-hook 'eglot-ensure)
-  (add-hook 'c++-mode-hook 'eglot-ensure))
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -125,6 +124,29 @@
 
 (use-package evil
   :defer t)
+
+(use-package tex
+  :defer t
+  :ensure auctex
+  :config
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-source-correlate-start-server t
+        TeX-source-correlate-method 'synctex
+        TeX-command-extra-options "-synctex=1")
+  
+  (global-set-key (kbd "C-c C-v") 'TeX-view)
+  
+  (add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer))
+
+(use-package pdf-tools
+  :defer t
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fitpage
+                pdf-annot-activate-created-annotations t
+                pdf-view-incompatible-modes '(display-line-numbers-mode)))
 
 (use-package rust-mode
   :defer t)
@@ -164,7 +186,7 @@
    '("f079ef5189f9738cf5a2b4507bcaf83138ad22d9c9e32a537d61c9aae25502ef" "e27c9668d7eddf75373fa6b07475ae2d6892185f07ebed037eedf783318761d7" "ba4ab079778624e2eadbdc5d9345e6ada531dc3febeb24d257e6d31d5ed02577" "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "f74e8d46790f3e07fbb4a2c5dafe2ade0d8f5abc9c203cd1c29c7d5110a85230" "bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" "2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(haskell-mode go-mode yasnippet-snippets rust-mode typescript-mode gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(pdf-tools latex-preview-pane auctex haskell-mode go-mode yasnippet-snippets rust-mode typescript-mode gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
