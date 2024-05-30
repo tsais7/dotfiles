@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'ansi-color)
 
 (setq-default inhibit-splash-screen t
@@ -8,8 +9,7 @@
 
 (defun my-frame-settings (frame)
   (with-selected-frame frame
-    (set-frame-font "Iosevka Fixed 14")
-    (set-frame-size frame 80 40)))
+    (set-frame-font "Iosevka Fixed 14")))
 
 (add-hook 'after-make-frame-functions 'my-frame-settings)
 
