@@ -15,11 +15,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
     
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
     
-    
     source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
     source /opt/homebrew/opt/chruby/share/chruby/auto.sh
     chruby ruby-3.1.3
 fi
+
+. "$HOME/.cargo/env"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -36,5 +37,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-. "$HOME/.cargo/env"
+# Added by `rbenv init` on Sun Jun  2 02:39:05 CST 2024
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(~/.rbenv/bin/rbenv init - bash)"
