@@ -40,3 +40,5 @@
 	prompt = false
 [difftool "meld"]
 	path = /usr/bin/meld
+[rerere]
+	enabled = true
