@@ -22,7 +22,8 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;(global-display-line-numbers-mode t)
+;; (global-display-line-numbers-mode t)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode 1)
 (global-set-key [down-mouse-3] 'imenu)
 
 (setq visible-bell 0)
@@ -39,13 +40,24 @@
                          (c-toggle-comment-style -1)))
 
 (require 'dired-x)
-(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+(setq dired-omit-files
+      (concat dired-omit-files "\\|^\\..+$"))
 (setq dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 
-(rc/require 'yasnippet-snippets)
+;;; company
+(rc/require 'company)
+(require 'company)
+
+(global-company-mode)
+
+;;; yasnippet
 (rc/require 'yasnippet)
+(require 'yasnippet)
+
 (yas-global-mode 1)
+;; snippet collection
+(rc/require 'yasnippet-snippets)
 
 (eval-and-compile
   (setq use-package-always-ensure t
@@ -62,9 +74,6 @@
   (ido-everywhere 1)
   (ido-ubiquitous-mode 1))
 
-(use-package company
-  :config (global-company-mode t))
-
 (use-package helm
   :bind (("C-c h" . 'helm-command-prefix)
          ("C-x b" . 'helm-mini)))
@@ -80,10 +89,14 @@
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)))
+         ("C-c C-<" . mc/mark-all-like-this)
+         ("C-\"" . mc/skip-to-next-like-this)
+         ("C-:" . mc/skip-to-previous-like-this)))
 
 (use-package magit
-  :config (setq magit-auto-revert-mode nil))
+  :config (setq magit-auto-revert-mode nil)
+  :bind (("C-c m s" . magit-status)
+         ("C-c m l" . magit-log)))
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
@@ -92,9 +105,16 @@
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd")))
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) .
+                 ("rust-analyzer"
+                  :initializationOptions
+                  (:check (:command "clippy"))))))
+
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
+(add-hook 'rust-mode-hook 'eglot-ensure)
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -142,15 +162,12 @@
                 pdf-annot-activate-created-annotations t
                 pdf-view-incompatible-modes '(display-line-numbers-mode)))
 
-(use-package rust-mode
-  :defer t)
+(use-package rust-mode)
 
 (use-package typescript-mode
   :defer t)
-
 (use-package cmake-mode
   :defer t)
-
 (use-package go-mode
   :defer t)
 
