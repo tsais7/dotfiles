@@ -11,10 +11,8 @@
 (add-hook 'after-init-hook 'set-default-font)
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
-
-;;; https://www.emacswiki.org/emacs/AnsiColor
-;;(use-package ansi-color
-;;    :hook (compilation-filter . ansi-color-compilation-filter))
+;(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;(add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 (use-package xterm-color
   :ensure)
@@ -210,7 +208,7 @@
    '("f079ef5189f9738cf5a2b4507bcaf83138ad22d9c9e32a537d61c9aae25502ef" "e27c9668d7eddf75373fa6b07475ae2d6892185f07ebed037eedf783318761d7" "ba4ab079778624e2eadbdc5d9345e6ada531dc3febeb24d257e6d31d5ed02577" "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "f74e8d46790f3e07fbb4a2c5dafe2ade0d8f5abc9c203cd1c29c7d5110a85230" "bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" "2dc03dfb67fbcb7d9c487522c29b7582da20766c9998aaad5e5b63b5c27eec3f" "dea4b7d43d646aa06a4f705a58f874ec706f896c25993fcf73de406e27dc65ba" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(xterm-color expand-region pdf-tools auctex haskell-mode go-mode yasnippet-snippets rust-mode typescript-mode gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex magit use-package)))
+   '(xterm-color expand-region pdf-tools auctex haskell-mode go-mode yasnippet-snippets rust-mode typescript-mode gruber-darker-theme multiple-cursors cmake-mode markdown-mode cmake-ide evil rg treemacs helm-gtags eglot ido-completing-read+ helm company which-key move-text zenburn-theme smex use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
