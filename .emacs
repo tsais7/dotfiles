@@ -6,13 +6,14 @@
 
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Fixed 14" nil t)))
+      (set-frame-font "Iosevka Fixed 16" nil t)))
 
 (add-hook 'after-init-hook 'set-default-font)
-(add-to-list 'default-frame-alist '(fullscreen . fullboth))
-(add-to-list 'initial-frame-alist '(fullscreen . fullboth))
-;(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-;(add-to-list 'default-frame-alist '(fullscreen . fullheight))
+
+;(add-to-list 'default-frame-alist '(fullscreen . fullboth))
+;(add-to-list 'initial-frame-alist '(fullscreen . fullboth))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 (use-package xterm-color
   :ensure)
