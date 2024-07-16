@@ -53,6 +53,16 @@
                          (interactive)
                          (c-toggle-comment-style -1)))
 
+(defun set-whitespace-handling ()
+  (interactive)
+  (whitespace-mode 1)
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
+(add-hook 'emacs-lisp-mode-hook 'set-whitespace-handling)
+(add-hook 'c++-mode-hook 'set-whitespace-handling)
+(add-hook 'c-mode-hook 'set-whitespace-handling)
+(add-hook 'rust-mode-hook 'set-whitespace-handling)
+
 (require 'dired-x)
 (setq dired-omit-files
       (concat dired-omit-files "\\|^\\..+$"))
