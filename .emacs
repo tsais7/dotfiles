@@ -6,7 +6,7 @@
 
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Fixed 16" nil t)))
+      (set-frame-font "Iosevka Fixed 14" nil t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
@@ -55,7 +55,6 @@
 
 (defun set-whitespace-handling ()
   (interactive)
-  (whitespace-mode 1)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
 (add-hook 'emacs-lisp-mode-hook 'set-whitespace-handling)
@@ -126,6 +125,7 @@
 (use-package rg)
 
 (use-package eglot
+  :defer t
   :config
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-to-list 'eglot-server-programs
@@ -134,9 +134,9 @@
                   :initializationOptions
                   (:check (:command "clippy"))))))
 
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-(add-hook 'rust-mode-hook 'eglot-ensure)
+;(add-hook 'c-mode-hook 'eglot-ensure)
+;(add-hook 'c++-mode-hook 'eglot-ensure)
+;(add-hook 'rust-mode-hook 'eglot-ensure)
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,

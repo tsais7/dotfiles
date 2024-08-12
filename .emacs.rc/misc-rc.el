@@ -9,7 +9,10 @@
 
 (defun my-frame-settings (frame)
   (with-selected-frame frame
-    (set-frame-font "Iosevka Fixed 16")))
+    (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+    (add-to-list 'default-frame-alist '(fullscreen . fullheight))
+    (pixel-scroll-precision-mode 1)
+    (set-frame-font "Iosevka Fixed 14")))
 
 (add-hook 'after-make-frame-functions 'my-frame-settings)
 
@@ -50,5 +53,3 @@
   (yank))
 
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
-
-
