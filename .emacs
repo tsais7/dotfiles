@@ -6,7 +6,7 @@
 
 (defun set-default-font ()
   (if (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Fixed 14" nil t)))
+      (set-frame-font "Iosevka 16" nil t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
@@ -15,13 +15,13 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
+;; fix escape characters and color codes
 (use-package xterm-color
   :ensure)
 (setq compilation-environment '("TERM=xterm-256color"))
 
 (defun my/advice-compilation-filter (f proc string)
   (funcall f proc (xterm-color-filter string)))
-
 (advice-add 'compilation-filter :around #'my/advice-compilation-filter)
 
 (tool-bar-mode 0)
@@ -36,7 +36,7 @@
 
 (global-set-key [down-mouse-3] 'imenu)
 
-;; (global-display-line-numbers-mode t)
+;(global-display-line-numbers-mode t)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode 1)
 
 (setq x-select-enable-clipboard t)
@@ -184,8 +184,8 @@
                 pdf-annot-activate-created-annotations t
                 pdf-view-incompatible-modes '(display-line-numbers-mode)))
 
-(use-package rust-mode)
-
+(use-package rust-mode
+  :defer t)
 (use-package typescript-mode
   :defer t)
 (use-package cmake-mode
