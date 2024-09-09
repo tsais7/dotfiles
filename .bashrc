@@ -9,6 +9,7 @@ alias a="ls -a"
 
 alias python="python3"
 alias pip="pip3"
+alias st="subl"
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
