@@ -10,6 +10,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
+    export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
     export GOPATH="$(go env GOPATH)"
     export PATH="${PATH}:${GOPATH}/bin"
     
