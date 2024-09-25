@@ -12,7 +12,7 @@
     (add-to-list 'initial-frame-alist '(fullscreen . maximized))
     (add-to-list 'default-frame-alist '(fullscreen . fullheight))
     (pixel-scroll-precision-mode 1)
-    (set-frame-font "Iosevka 15")))
+    (set-frame-font "Iosevka 14")))
 
 (add-hook 'after-make-frame-functions 'my-frame-settings)
 
