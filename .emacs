@@ -16,13 +16,13 @@
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
 ;; fix escape characters and color codes
-(use-package xterm-color
-  :ensure)
-(setq compilation-environment '("TERM=xterm-256color"))
+;; (use-package xterm-color
+;;   :ensure)
+;; (setq compilation-environment '("TERM=xterm-256color"))
 
-(defun my/advice-compilation-filter (f proc string)
-  (funcall f proc (xterm-color-filter string)))
-(advice-add 'compilation-filter :around #'my/advice-compilation-filter)
+;; (defun my/advice-compilation-filter (f proc string)
+;;   (funcall f proc (xterm-color-filter string)))
+;; (advice-add 'compilation-filter :around #'my/advice-compilation-filter)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)

@@ -7,20 +7,6 @@
       indent-tabs-mode nil
       compilation-scroll-output t)
 
-(defun my-frame-settings (frame)
-  (with-selected-frame frame
-    (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-    (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-    (pixel-scroll-precision-mode 1)
-    (set-frame-font "Iosevka 14")))
-
-(add-hook 'after-make-frame-functions 'my-frame-settings)
-
-(when (daemonp)
-  (add-hook 'after-init-hook
-            (lambda ()
-              (my-frame-settings (selected-frame)))))
-
 (defun rc/put-filename-on-clipboard ()
   "Put the current file name on the clipboard"
   (interactive)
@@ -51,5 +37,4 @@
   (yank)
   (newline)
   (yank))
-
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
