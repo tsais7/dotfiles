@@ -29,12 +29,15 @@
         (kill-buffer buffer)
         (message "Killed autoloads buffer %s" name)))))
 
+
 (defun rc/duplicate-line ()
   "Duplicate current line"
   (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (newline)
-  (yank))
-(global-set-key (kbd "C-,") 'rc/duplicate-line)
+  (let ((column (- (point) (point-at-bol)))
+        (line (let ((s (thing-at-point 'line t)))
+                (if s (string-remove-suffix "\n" s) ""))))
+    (move-end-of-line 1)
+    (newline)
+    (insert line)
+    (move-beginning-of-line 1)
+    (forward-char column)))
