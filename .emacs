@@ -1,6 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 (package-initialize)
 
+(defun my-log-load-message (filename)
+  (with-current-buffer (get-buffer-create "*load-log*")
+    (goto-char (point-max))
+    (insert (format "Loading %s\n" filename))))
+
+(advice-add 'load :before (lambda (file &rest _) (my-log-load-message file)))
+(advice-add 'require :before (lambda (feature &rest _) (my-log-load-message feature)))
+
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (setq custom-file "~/.emacs.rc/emacs-custom.el")

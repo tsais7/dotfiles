@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (require 'ansi-color)
+(require 'facemenu)
 
 (setq-default inhibit-splash-screen t
       make-backup-files nil
@@ -29,7 +30,6 @@
         (kill-buffer buffer)
         (message "Killed autoloads buffer %s" name)))))
 
-
 (defun rc/duplicate-line ()
   "Duplicate current line"
   (interactive)
@@ -41,3 +41,18 @@
     (insert line)
     (move-beginning-of-line 1)
     (forward-char column)))
+
+
+(defun my-frame-settings (&optional frame)
+  "Apply custom settings to FRAME or current frame."
+  (with-selected-frame (or frame (selected-frame))
+    (set-frame-font "Iosevka 14" nil t)))
+
+(add-hook 'after-make-frame-functions #'my-frame-settings)
+
+;; Apply settings to initial frame in non-daemon mode
+(unless (daemonp)
+  (my-frame-settings))
+
+;; Apply settings to initial frame in daemon mode
+(add-hook 'server-after-make-frame-hook #'my-frame-settings)
