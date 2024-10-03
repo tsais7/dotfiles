@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("8363207a952efb78e917230f5a4d3326b2916c63237c1f61d7e5fe07def8d378" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" default))
+   '("5aedf993c7220cbbe66a410334239521d8ba91e1815f6ebde59cecc2355d7757" "75b371fce3c9e6b1482ba10c883e2fb813f2cc1c88be0b8a1099773eb78a7176" "8363207a952efb78e917230f5a4d3326b2916c63237c1f61d7e5fe07def8d378" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" default))
  '(delete-selection-mode t)
  '(package-selected-packages
    '(gruvbox-theme xterm-color expand-region pdf-tools auctex haskell-mode go-mode yasnippet-snippets rust-mode typescript-mode multiple-cursors cmake-mode markdown-mode evil rg eglot ido-completing-read+ helm company which-key move-text magit smex)))
