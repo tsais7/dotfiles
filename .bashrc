@@ -5,13 +5,22 @@ export CLICOLOR=1
 alias l="ls -a"
 alias ll="ls -als"
 alias d="ls -alh"
-alias a="ls -a"
 
 alias python="python3"
 alias pip="pip3"
-alias st="subl"
+
+alias st="subl" # sublime-text
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
+
+alias jsw="jekyll serve --watch"
+alias jb="jekyll build"
+
+if [[ "$(uname)" == "Linux" ]]; then
+    function code() {
+        (flatpak run com.visualstudio.code $*)
+    }
+fi
 
 [ -f "/Users/gir/.ghcup/env" ] && . "/Users/gir/.ghcup/env" # ghcup-env
 

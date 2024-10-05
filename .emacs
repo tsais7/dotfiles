@@ -62,10 +62,11 @@
 (setq dired-mouse-drag-files t)
 
 (eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t))
 
 (use-package multiple-cursors
+  :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
@@ -91,35 +92,43 @@
   (ido-ubiquitous-mode 1))
 
 (use-package helm
+  :ensure t
   :bind (("C-c h" . 'helm-command-prefix)
          ("C-x b" . 'helm-mini)))
 
 (use-package company
+  :ensure t
   :config (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package yasnippet
-  :defer t
-  :config (yas-global-mode 1))
+  :ensure t
+  :config (yas-global-mode 1)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"
+                           "~/.emacs.d/elpa/yasnippet-snippets-20240911.801/snippets/")))
+
 
 (use-package yasnippet-snippets
-  :defer t
+  :ensure t
   :after yasnippet)
 
 (use-package move-text
+  :ensure t
   :bind (("M-p" . move-text-up)
 	     ("M-n" . move-text-down)))
 
 (use-package expand-region
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
-(use-package rg)
 
 (use-package which-key
+  :ensure t
   :config (which-key-mode))
 
+(use-package rg
+  :defer t)
 (use-package evil
   :defer t)
-
 (use-package rust-mode
   :defer t)
 (use-package typescript-mode
@@ -133,11 +142,6 @@
   :defer t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
-
-(use-package elpy
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
 
 (use-package haskell-mode
   :defer t
@@ -191,4 +195,6 @@
                 (funcall f proc (xterm-color-filter string)))))
 
 (use-package gruvbox-theme
-  :config (load-theme 'gruvbox-dark-hard))
+  :config (load-theme 'gruvbox-dark-hard)
+  ;; :config (load-theme 'gruvbox-light-soft)
+  )
