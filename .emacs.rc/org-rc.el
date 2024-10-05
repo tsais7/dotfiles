@@ -4,6 +4,12 @@
 
 (setq org-agenda-files (list "~/org/personal.org"))
 
+(defun my-org-finder ()
+  (interactive)  
+  (ido-find-file-in-dir "~/org/"))
+
+(global-set-key (kbd "C-c f") 'my-org-finder)
+
 ;; https://orgmode.org/worg/org-tutorials/org-jekyll.html
 ;; https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
 (require 'ox-publish)

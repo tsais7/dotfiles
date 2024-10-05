@@ -1,6 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 (require 'ansi-color)
-(require 'facemenu)
 
 (setq-default inhibit-splash-screen t
       make-backup-files nil
@@ -50,9 +49,7 @@
 
 (add-hook 'after-make-frame-functions #'my-frame-settings)
 
-;; Apply settings to initial frame in non-daemon mode
 (unless (daemonp)
   (my-frame-settings))
 
-;; Apply settings to initial frame in daemon mode
 (add-hook 'server-after-make-frame-hook #'my-frame-settings)
