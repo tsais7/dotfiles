@@ -21,14 +21,6 @@
   (kill-new (buffer-name))
   (message (buffer-name)))
 
-(defun rc/kill-autoloads-buffers ()
-  (interactive)
-  (dolist (buffer (buffer-list))
-    (let ((name (buffer-name buffer)))
-      (when (string-match-p "-autoloads.el" name)
-        (kill-buffer buffer)
-        (message "Killed autoloads buffer %s" name)))))
-
 (defun rc/duplicate-line ()
   "Duplicate current line"
   (interactive)
@@ -47,9 +39,8 @@
   (with-selected-frame (or frame (selected-frame))
     (set-frame-font "Iosevka 14" nil t)))
 
-(add-hook 'after-make-frame-functions #'my-frame-settings)
-
 (unless (daemonp)
   (my-frame-settings))
 
+(add-hook 'after-make-frame-functions #'my-frame-settings)
 (add-hook 'server-after-make-frame-hook #'my-frame-settings)

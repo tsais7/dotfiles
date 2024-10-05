@@ -1,11 +1,14 @@
 ;; -*- lexical-binding: t; -*-
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
+
 (package-initialize)
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
 (load "~/.emacs.rc/org-rc.el")
 
-(setq custom-file "~/.emacs.rc/emacs-custom.el")
+(setq custom-file "~/.emacs-custom.el")
 (load custom-file)
 
 (defun set-default-font ()
@@ -61,11 +64,18 @@
 (setq dired-listing-switches "-alh")
 (setq dired-mouse-drag-files t)
 
-(eval-and-compile
-  (setq use-package-always-ensure t)
+(eval-when-compile
   (setq use-package-expand-minimally t))
 
+(use-package paredit
+  :ensure t
+  :hook ((emacs-lisp-mode . enable-paredit-mode)
+         (lisp-mode . enable-paredit-mode)
+         (common-lisp-mode . enable-paredit-mode)
+         (scheme-mode . enable-paredit-mode)))
+
 (use-package multiple-cursors
+  :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)
@@ -74,59 +84,53 @@
          ("C-:" . mc/skip-to-previous-like-this)))
 
 (use-package magit
+  :ensure t
   :config (setq magit-auto-revert-mode nil)
   :bind ("C-c m l" . magit-log))
 
 (use-package smex
+  :ensure t
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
   :config (smex-initialize))
 
 (use-package ido-completing-read+
+  :ensure t
   :config
   (ido-mode 1)
   (ido-everywhere 1)
   (ido-ubiquitous-mode 1))
 
 (use-package helm
+  :ensure t
   :bind (("C-c h" . 'helm-command-prefix)
          ("C-x b" . 'helm-mini)))
 
 (use-package company
+  :ensure t
   :config (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package yasnippet
+  :ensure t
   :config (yas-global-mode 1)
   (setq yas-snippet-dirs '("~/.emacs.d/snippets")))
 
 (use-package yasnippet-snippets
+  :ensure t
   :after yasnippet)
 
 (use-package move-text
+  :ensure t
   :bind (("M-p" . move-text-up)
 	     ("M-n" . move-text-down)))
 
 (use-package expand-region
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
 (use-package which-key
+  :ensure t
   :config (which-key-mode))
-
-(use-package rainbow-mode)
-
-(use-package rg
-  :defer t)
-(use-package evil
-  :defer t)
-
-(use-package rust-mode
-  :defer t)
-(use-package typescript-mode
-  :defer t)
-(use-package cmake-mode
-  :defer t)
-(use-package go-mode
-  :defer t)
 
 (use-package markdown-mode
   :defer t
@@ -183,6 +187,24 @@
   (advice-add 'compilation-filter :around
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
+
+(use-package keycast
+  :defer t)
+
+(use-package evil
+  :defer t)
+
+(use-package rust-mode
+  :defer t)
+
+(use-package typescript-mode
+  :defer t)
+
+(use-package cmake-mode
+  :defer t)
+
+(use-package go-mode
+  :defer t)
 
 (use-package gruvbox-theme
   ;; :config (load-theme 'modus-vivendi)
