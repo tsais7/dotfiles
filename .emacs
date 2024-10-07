@@ -207,6 +207,7 @@
   :defer t)
 
 (use-package gruvbox-theme
+  :ensure t
   ;; :config (load-theme 'modus-vivendi)
   ;; :config (load-theme 'gruvbox-dark-soft)
   ;; :config (load-theme 'gruvbox-dark-medium)

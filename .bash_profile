@@ -16,10 +16,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="${PATH}:${GOPATH}/bin"
     
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-    
-    source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-    source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-    chruby ruby-3.1.3
 fi
 
 . "$HOME/.cargo/env"
@@ -39,6 +35,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Added by `rbenv init` on Sun Jun  2 02:39:05 CST 2024
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(~/.rbenv/bin/rbenv init - bash)"
+# Added by `rbenv init` on Mon Oct  7 18:50:54 +08 2024
+eval "$(rbenv init - --no-rehash bash)"
