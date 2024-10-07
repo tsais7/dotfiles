@@ -12,7 +12,7 @@
 (load custom-file)
 
 (defun set-default-font ()
-  (when (member "Iosevka" (font-family-list))
+  (if (member "Iosevka" (font-family-list))
       (set-frame-font "Iosevka 14" t)))
 (add-hook 'after-init-hook 'set-default-font)
 
@@ -119,9 +119,7 @@
   :ensure t
   :after yasnippet)
 
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
+
 
 (use-package move-text
   :ensure t
@@ -192,6 +190,8 @@
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
 
+(use-package flycheck
+  :defer t)
 
 (use-package keycast
   :defer t)
