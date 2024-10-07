@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (require 'ansi-color)
-
+(require 'facemenu)
 (setq-default inhibit-splash-screen t
       make-backup-files nil
       tab-width 4

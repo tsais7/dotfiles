@@ -119,6 +119,10 @@
   :ensure t
   :after yasnippet)
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
 (use-package move-text
   :ensure t
   :bind (("M-p" . move-text-up)
@@ -187,6 +191,7 @@
   (advice-add 'compilation-filter :around
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
+
 
 (use-package keycast
   :defer t)
