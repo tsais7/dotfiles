@@ -16,10 +16,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="${PATH}:${GOPATH}/bin"
     
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
-    
-    source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-    source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-    chruby ruby-3.1.3
 fi
 
 . "$HOME/.cargo/env"
