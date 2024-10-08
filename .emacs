@@ -119,8 +119,6 @@
   :ensure t
   :after yasnippet)
 
-
-
 (use-package move-text
   :ensure t
   :bind (("M-p" . move-text-up)
@@ -190,12 +188,6 @@
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
 
-(use-package flycheck
-  :defer t)
-
-(use-package keycast
-  :defer t)
-
 (use-package evil
   :defer t)
 
@@ -213,9 +205,5 @@
 
 (use-package gruvbox-theme
   :ensure t
-  ;; :config (load-theme 'modus-vivendi)
-  ;; :config (load-theme 'gruvbox-dark-soft)
-  ;; :config (load-theme 'gruvbox-dark-medium)
   :config (load-theme 'gruvbox-dark-hard)
-  ;; :config (load-theme 'gruvbox-light-soft)
   )
