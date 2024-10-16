@@ -2,7 +2,7 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
-(add-hook  'org-mode-hook #'visual-line-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
 
 (setq org-agenda-files (list "~/org/personal.org"))
 

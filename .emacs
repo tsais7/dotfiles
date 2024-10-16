@@ -160,9 +160,8 @@
 ;; (add-hook 'c++-mode-hook 'eglot-ensure)
 ;; (add-hook 'rust-mode-hook 'eglot-ensure)
 
-(use-package tex
+(use-package auctex
   :defer t
-  :ensure auctex
   :config
   (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
         TeX-source-correlate-start-server t)
