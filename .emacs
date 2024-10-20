@@ -132,6 +132,22 @@
   :ensure t
   :config (which-key-mode))
 
+(use-package evil
+  :ensure t
+  :defer t)
+(use-package rust-mode
+  :ensure t
+  :defer t)
+(use-package typescript-mode
+  :ensure t
+  :defer t)
+(use-package cmake-mode
+  :ensure t
+  :defer t)
+(use-package go-mode
+  :ensure t
+  :defer t)
+
 (use-package markdown-mode
   :defer t
   :mode ("README\\.md\\'" . gfm-mode)
@@ -159,6 +175,7 @@
 ;; (add-hook 'c-mode-hook 'eglot-ensure)
 ;; (add-hook 'c++-mode-hook 'eglot-ensure)
 ;; (add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'go-mode-hook 'eglot-ensure)
 
 (use-package auctex
   :defer t
@@ -187,20 +204,7 @@
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
 
-(use-package evil
-  :defer t)
 
-(use-package rust-mode
-  :defer t)
-
-(use-package typescript-mode
-  :defer t)
-
-(use-package cmake-mode
-  :defer t)
-
-(use-package go-mode
-  :defer t)
 
 (use-package gruvbox-theme
   :ensure t

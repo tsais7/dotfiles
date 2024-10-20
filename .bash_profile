@@ -12,11 +12,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
     export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
-    export GOPATH="$(go env GOPATH)"
-    export PATH="${PATH}:${GOPATH}/bin"
     
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home"
 fi
+
+export GOPATH="$(go env GOPATH)"
+export PATH="${PATH}:${GOPATH}/bin"
 
 . "$HOME/.cargo/env"
 
