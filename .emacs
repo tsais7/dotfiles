@@ -12,8 +12,9 @@
 (load custom-file)
 
 (defun set-default-font ()
-  (if (member "Iosevka" (font-family-list))
+  (when (member "Iosevka" (font-family-list))
       (set-frame-font "Iosevka 14" t)))
+
 (add-hook 'after-init-hook 'set-default-font)
 
 ;; (add-to-list 'default-frame-alist '(fullscreen . fullboth))
@@ -28,7 +29,7 @@
 (xterm-mouse-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(global-set-key [down-mouse-3] 'imenu)
+;; (global-set-key [down-mouse-3] 'imenu)
 (global-set-key (kbd "C-c p") 'find-file-at-point)
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode 1)
@@ -132,6 +133,9 @@
   :ensure t
   :config (which-key-mode))
 
+(use-package treemacs
+  :ensure t
+  :defer t)
 (use-package evil
   :ensure t
   :defer t)

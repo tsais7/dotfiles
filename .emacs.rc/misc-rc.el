@@ -37,7 +37,8 @@
 (defun my-frame-settings (&optional frame)
   "Apply custom settings to FRAME or current frame."
   (with-selected-frame (or frame (selected-frame))
-    (set-frame-font "Iosevka 14" nil t)))
+    (when (member "Iosevka" (font-family-list))
+      (set-frame-font "Iosevka 14" nil t))))
 
 (unless (daemonp)
   (my-frame-settings))
