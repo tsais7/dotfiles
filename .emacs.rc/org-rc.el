@@ -10,9 +10,13 @@
   (interactive)
   (ido-find-file-in-dir "~/org/"))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((C . t)))
+
 (setq org-publish-project-alist
       '(("website"
          :components ("posts" "assets"))
+
         ("posts"
          :base-directory "~/blog/org/posts"
          :base-extension "org"
