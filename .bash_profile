@@ -38,3 +38,8 @@ unset __conda_setup
 
 # Added by `rbenv init` on Mon Oct  7 18:50:54 +08 2024
 eval "$(rbenv init - --no-rehash bash)"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/gir/.local/share/JetBrains/Toolbox/scripts"
+
