@@ -20,4 +20,4 @@ set backspace=indent,eol,start
 set laststatus=2
 set statusline+=%F
 
-colorscheme desertEx
+imap jj <Esc>

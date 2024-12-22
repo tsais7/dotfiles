@@ -13,7 +13,7 @@
 
 (defun set-default-font ()
   (when (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka 14" t)))
+      (set-frame-font "Iosevka 16" t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
