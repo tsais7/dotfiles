@@ -168,14 +168,24 @@
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
 
-(use-package olivetti)
+(use-package olivetti
+  :config
+  (setq olivetti-minimum-body-width 100))
 
 (use-package challenger-deep-theme)
 (use-package gruber-darker-theme)
 (use-package material-theme)
 (use-package flatland-theme)
+(use-package gruvbox-theme)
 (use-package modus-themes)
+(use-package nord-theme)
+(use-package nordless-theme)
+(use-package nordic-night-theme)
 
+(load-theme 'nordless t)
 ;; (load-theme 'challenger-deep t)
-(load-theme 'material t)
+;; (load-theme 'gruber-darker t)
+;; (load-theme 'material t)
+;; (load-theme 'flatland t)
+;; (load-theme 'modus-vivendi-tinted t)
 ;; (load-theme 'modus-vivendi t)
