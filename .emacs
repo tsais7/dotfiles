@@ -13,7 +13,7 @@
 
 (defun set-default-font ()
   (when (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka 16" t)))
+      (set-frame-font "Iosevka Term 16" t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
@@ -35,9 +35,10 @@
 
 (add-hook 'prog-mode-hook
           (lambda ()
-          'display-line-numbers-mode 1
-          (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-          (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
+            (display-line-numbers-mode 1)
+            (setq display-line-numbers-width-start 1000)
+            (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
+            (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
 ;; (setq display-line-numbers-type 'relative)
@@ -167,6 +168,14 @@
               (lambda (f proc string)
                 (funcall f proc (xterm-color-filter string)))))
 
+(use-package olivetti)
+
+(use-package challenger-deep-theme)
+(use-package gruber-darker-theme)
 (use-package material-theme)
-(require 'material-theme)
+(use-package flatland-theme)
+(use-package modus-themes)
+
+;; (load-theme 'challenger-deep t)
 (load-theme 'material t)
+;; (load-theme 'modus-vivendi t)
