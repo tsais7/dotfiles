@@ -120,7 +120,6 @@
 (use-package which-key
   :config (which-key-mode))
 
-(use-package rust-mode)
 (use-package typescript-mode)
 (use-package cmake-mode)
 (use-package go-mode)
@@ -138,11 +137,21 @@
   (setq haskell-process-type 'cabal-new-repl)
   (setq haskell-process-log t))
 
+(use-package rust-mode
+  :init
+  (setq rust-mode-treesitter-derive t)
+  :hook
+  ((rust-mode . eglot)
+   (rust-mode . company-mode)))
+
 (use-package eglot
+  :hook
+  (rust-mode . eglot-ensure)
   :config
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+  (add-to-list 'eglot-server-programs
+               '((c++-mode c-mode) "clangd"))
   (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
-                 ("rust-analyzer": initializationOptions (:check (:command "clippy"))))))
+                 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
 
 (use-package auctex
   :config
@@ -182,10 +191,13 @@
 (use-package nordless-theme)
 (use-package nordic-night-theme)
 
-(load-theme 'nordless t)
+
 ;; (load-theme 'challenger-deep t)
-;; (load-theme 'gruber-darker t)
+(load-theme 'gruber-darker t)
 ;; (load-theme 'material t)
 ;; (load-theme 'flatland t)
 ;; (load-theme 'modus-vivendi-tinted t)
 ;; (load-theme 'modus-vivendi t)
+;; (load-theme 'nord t)
+;; (load-theme 'nordless t)
+;; (load-theme 'nordic-midnight t)

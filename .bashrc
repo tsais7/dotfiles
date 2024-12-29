@@ -16,6 +16,8 @@ alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias jsw="jekyll serve --watch"
 alias jb="jekyll build"
 
+. "$HOME/.cargo/env"
+
 if [[ "$(uname)" == "Linux" ]]; then
     function code() {
         (flatpak run com.visualstudio.code $*)
@@ -25,8 +27,6 @@ fi
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
-
-. "$HOME/.cargo/env"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -42,4 +42,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

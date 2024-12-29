@@ -8,6 +8,13 @@
               indent-tabs-mode nil
               compilation-scroll-output t)
 
+(setq treesit-language-source-alist
+      '((rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (c++ "https://github.com/tree-sitter/tree-sitter-cpp")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (go "https://github.com/tree-sitter/tree-sitter-go")
+        (bash "https://github.com/tree-sitter/tree-sitter-bash")))
+
 (defun whitespace-handling ()
   (interactive)
   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
