@@ -193,8 +193,8 @@
 
 
 ;; (load-theme 'challenger-deep t)
-(load-theme 'gruber-darker t)
-;; (load-theme 'material t)
+;; (load-theme 'gruber-darker t)
+(load-theme 'material t)
 ;; (load-theme 'flatland t)
 ;; (load-theme 'modus-vivendi-tinted t)
 ;; (load-theme 'modus-vivendi t)

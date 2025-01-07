@@ -4,6 +4,7 @@
 (global-set-key (kbd "C-c f") 'my-org-finder)
 
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'olivetti-mode)
 (setq org-agenda-files (list "~/org/personal.org"))
 
 (defun my-org-finder ()
