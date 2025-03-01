@@ -12,8 +12,8 @@
 (load custom-file)
 
 (defun set-default-font ()
-  (when (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka Term 16" t)))
+  (when (member "TX-02" (font-family-list))
+      (set-frame-font "TX-02 16" t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
@@ -29,6 +29,7 @@
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (xterm-mouse-mode 1)
+(global-auto-revert-mode 1)
 
 (global-set-key [down-mouse-3] 'imenu)
 (global-set-key (kbd "C-c p") 'find-file-at-point)
