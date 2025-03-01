@@ -1,12 +1,18 @@
-#export PS1='\u@\h:\[\e[01;32m\]\w\[\e[0m\]\$ '
-#export LSCOLORS=Exfxcxdxbxegedabagacad
-export CLICOLOR=1
+alias l="ls -A --color=auto"
+alias ll="ls -al --color=auto"
+alias d="ls -alh --color=auto"
+alias mkdir="mkdir -p"
+alias duh="du -sh ./*"
 
-alias l="ls -a"
-alias ll="ls -als"
-alias d="ls -alh"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~"
 
-alias python="python3"
+alias zup="sudo zypper dup"
+alias zin="sudo zypper in"
+alias zrm="sudo zypper rm"
+
+alias py="python3"
 alias pip="pip3"
 
 alias st="subl" # sublime-text
