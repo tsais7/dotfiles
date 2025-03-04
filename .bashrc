@@ -1,3 +1,7 @@
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
+
 alias l="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
@@ -48,3 +52,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+export PATH=~/.npm-global/bin:$PATH

@@ -13,7 +13,7 @@
 
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
-      (set-frame-font "TX-02 16" t)))
+      (set-frame-font "TX-02 14" t)))
 
 (add-hook 'after-init-hook 'set-default-font)
 
