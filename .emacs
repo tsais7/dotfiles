@@ -14,36 +14,36 @@
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
     (set-frame-font "TX-02 14" t)))
-
 (add-hook 'after-init-hook 'set-default-font)
 
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; (add-to-list 'default-frame-alist '(fullscreen . fullboth))
-;; (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
+;; (add-to-list 'default-frame-alist '(fullscreen . fullboth))
+;; (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
+
+(fset 'yes-or-no-p 'y-or-n-p)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (xterm-mouse-mode 1)
+(savehist-mode 1)
+(recentf-mode 1)
 (global-auto-revert-mode 1)
 
-(global-set-key [down-mouse-3] 'imenu)
 (global-set-key (kbd "C-c p") 'find-file-at-point)
 
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
             (setq display-line-numbers-width-start 1000)
+            (setq display-line-numbers-type 'relative)
             (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
             (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
-;; (setq display-line-numbers-type 'relative)
-(setq backup-drectory-alist '(("." . "~/.emacs_saves")))
+(setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -66,18 +66,68 @@
   (setq use-package-always-ensure t)
   (setq use-package-expand-minimally t))
 
+(use-package emacs
+  :custom
+  ;; TAB cycle if there are only few candidates
+  ;; (completion-cycle-threshold 3)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (tab-always-indent 'complete))
+
 (use-package smex
-  :ensure t
   :bind (("M-x" . 'smex)
 	     ("M-X" . 'smex-major-mode-commands))
   :config (smex-initialize))
 
 (use-package ido-completing-read+
-  :ensure t
   :config
   (ido-mode 1)
   (ido-everywhere 1)
-  (ido-ubiquitous-mode 1))
+  ;; (ido-ubiquitous-mode 1)
+)
+
+(use-package vertico
+  :config
+  (setq vertico-cycle t)
+  (setq vertico-resize nil)
+  (vertico-mode))
+
+(use-package marginalia
+  :config
+  (marginalia-mode))
+
+(use-package orderless
+  :config
+  (setq completion-styles '(orderless basic)))
+
+(use-package consult
+  :bind (("C-x b" . consult-buffer)
+         ("C-c r" . consult-imenu)
+         ("M-s g" . consult-grep)
+         ("M-s f" . consult-find)
+         ("M-s o" . consult-outline)
+         ("M-s l" . consult-line)))
+
+(use-package embark
+  :bind (("C-." . embark-act)
+         ("M-;" . embark-dwim)))
+
+(use-package embark-consult)
+
+(use-package corfu
+  :config
+  (setq corfu-auto t)
+  (setq tab-always-indent 'complete)
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package paredit
   :hook ((emacs-lisp-mode . enable-paredit-mode)
@@ -96,13 +146,6 @@
 (use-package magit
   :config (setq magit-auto-revert-mode nil)
   :bind ("C-c m l" . magit-log))
-
-(use-package helm
-  :bind (("C-c h" . 'helm-command-prefix)
-         ("C-x b" . 'helm-mini)))
-
-(use-package company
-  :config (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package yasnippet
   :config (yas-global-mode 1)
@@ -182,23 +225,8 @@
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package challenger-deep-theme)
 (use-package gruber-darker-theme)
 (use-package material-theme)
-(use-package flatland-theme)
-(use-package gruvbox-theme)
-(use-package modus-themes)
-(use-package nord-theme)
-(use-package nordless-theme)
-(use-package nordic-night-theme)
 
-
-;; (load-theme 'challenger-deep t)
 ;; (load-theme 'gruber-darker t)
 (load-theme 'material t)
-;; (load-theme 'flatland t)
-;; (load-theme 'modus-vivendi-tinted t)
-;; (load-theme 'modus-vivendi t)
-;; (load-theme 'nord t)
-;; (load-theme 'nordless t)
-;; (load-theme 'nordic-midnight t)
