@@ -26,10 +26,10 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(column-number-mode 1)
 (xterm-mouse-mode 1)
-(savehist-mode 1)
+(column-number-mode 1)
 (recentf-mode 1)
+(savehist-mode 1)
 (global-auto-revert-mode 1)
 (global-completion-preview-mode 1)
 
@@ -63,7 +63,7 @@
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 (setq dired-mouse-drag-files t)
-()
+
 (eval-when-compile
   (require 'use-package-ensure)
   (setq use-package-always-ensure t)
@@ -90,7 +90,6 @@
 (use-package marginalia
   :config
   (marginalia-mode))
-
 
 (use-package orderless
   :custom
@@ -156,7 +155,7 @@
 
 (use-package move-text
   :bind (("M-p" . move-text-up)
-	     ("M-n" . move-text-down)))
+         ("M-n" . move-text-down)))
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))

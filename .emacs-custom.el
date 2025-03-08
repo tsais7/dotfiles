@@ -7,7 +7,7 @@
    '("ba4f725d8e906551cfab8c5f67e71339f60fac11a8815f51051ddb8409ea6e5c"))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(auctex cape compat corfu embark-consult expand-region go-mode
+   '(auctex eglot embark-consult expand-region go-mode
             gruber-darker-theme haskell-mode ido-completing-read+
             magit marginalia markdown-mode material-theme move-text
             multiple-cursors olivetti orderless paredit pdf-tools
