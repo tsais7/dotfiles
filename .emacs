@@ -45,7 +45,7 @@
 
 (setq visible-bell 0)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
-(setq tab-always-indent 'complete)
+
 
 
 (setq-default c-basic-offset 4
@@ -109,22 +109,22 @@
 
 (use-package embark-consult)
 
-;; (use-package corfu
-;;   :config
-;;   (setq corfu-auto t)
-;;   (setq corfu-auto-delay 0.2)
-;;   (setq corfu-auto-prefix 2)
-;;   (setq corfu-preselect 'prompt)
+(use-package corfu
+  :config
+  (setq corfu-auto t)
+  (setq corfu-auto-delay 0.2)
+  (setq corfu-auto-prefix 2)
+  (setq tab-always-indent 'complete)
+  (setq corfu-preselect 'prompt)
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
 
-;;   (setq corfu-popupinfo-delay '(1.25 . 0.5))
-;;   (corfu-popupinfo-mode)
-;;   (global-corfu-mode))
-
-;; (use-package cape
-;;   :init
-;;   (add-to-list 'completion-at-point-functions #'cape-file)
-;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-;;   (add-to-list 'completion-at-point-functions #'cape-keyword))
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package paredit
   :hook ((emacs-lisp-mode . enable-paredit-mode)
