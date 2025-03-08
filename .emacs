@@ -31,19 +31,22 @@
 (savehist-mode 1)
 (recentf-mode 1)
 (global-auto-revert-mode 1)
+(global-completion-preview-mode 1)
 
 (global-set-key (kbd "C-c p") 'find-file-at-point)
 
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
-            (setq display-line-numbers-width-start 1000)
+            (setq display-line-numbers-width-start 4)
             (setq display-line-numbers-type 'relative)
             (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
             (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
+(setq tab-always-indent 'complete)
+
 
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -60,32 +63,23 @@
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 (setq dired-mouse-drag-files t)
-
+()
 (eval-when-compile
   (require 'use-package-ensure)
   (setq use-package-always-ensure t)
   (setq use-package-expand-minimally t))
 
-(use-package emacs
-  :custom
-  ;; TAB cycle if there are only few candidates
-  ;; (completion-cycle-threshold 3)
+;; (use-package smex
+;;   :bind (("M-x" . 'smex)
+;; 	     ("M-X" . 'smex-major-mode-commands))
+;;   :config (smex-initialize))
 
-  ;; Enable indentation+completion using the TAB key.
-  ;; `completion-at-point' is often bound to M-TAB.
-  (tab-always-indent 'complete))
-
-(use-package smex
-  :bind (("M-x" . 'smex)
-	     ("M-X" . 'smex-major-mode-commands))
-  :config (smex-initialize))
-
-(use-package ido-completing-read+
-  :config
-  (ido-mode 1)
-  (ido-everywhere 1)
-  ;; (ido-ubiquitous-mode 1)
-)
+;; (use-package ido-completing-read+
+;;   :config
+;;   (ido-mode 1)
+;;   (ido-everywhere 1)
+;;   ;; (ido-ubiquitous-mode 1)
+;;   )
 
 (use-package vertico
   :config
@@ -97,9 +91,11 @@
   :config
   (marginalia-mode))
 
+
 (use-package orderless
-  :config
-  (setq completion-styles '(orderless basic)))
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
   :bind (("C-x b" . consult-buffer)
@@ -110,30 +106,34 @@
          ("M-s l" . consult-line)))
 
 (use-package embark
-  :bind (("C-." . embark-act)
-         ("M-;" . embark-dwim)))
+  :bind (("C-;" . embark-act)))
 
 (use-package embark-consult)
 
-(use-package corfu
-  :config
-  (setq corfu-auto t)
-  (setq tab-always-indent 'complete)
-  (setq corfu-popupinfo-delay '(1.25 . 0.5))
-  (corfu-popupinfo-mode)
-  (global-corfu-mode))
+;; (use-package corfu
+;;   :config
+;;   (setq corfu-auto t)
+;;   (setq corfu-auto-delay 0.2)
+;;   (setq corfu-auto-prefix 2)
+;;   (setq corfu-preselect 'prompt)
 
-(use-package cape
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-keyword))
+;;   (setq corfu-popupinfo-delay '(1.25 . 0.5))
+;;   (corfu-popupinfo-mode)
+;;   (global-corfu-mode))
+
+;; (use-package cape
+;;   :init
+;;   (add-to-list 'completion-at-point-functions #'cape-file)
+;;   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+;;   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package paredit
   :hook ((emacs-lisp-mode . enable-paredit-mode)
          (lisp-mode . enable-paredit-mode)
          (common-lisp-mode . enable-paredit-mode)
-         (scheme-mode . enable-paredit-mode)))
+         (scheme-mode . enable-paredit-mode))
+  :bind  (:map paredit-mode-map
+               ("M-s" . nil)))
 
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
@@ -165,7 +165,6 @@
   :config (which-key-mode))
 
 (use-package typescript-mode)
-(use-package cmake-mode)
 (use-package go-mode)
 
 (use-package markdown-mode
@@ -208,9 +207,17 @@
             #'TeX-revert-document-buffer))
 
 (use-package pdf-tools
+  :magic ("%PDF" . pdf-view-mode)
   :mode ("\\.pdf\\'" . pdf-view-mode)
+  :init
+  (defun my/pdf-tools-install ()
+    (unless (package-installed-p 'pdf-tools)
+      (package-install 'pdf-tools))
+    (pdf-tools-install t)
+    (pdf-loader-install))
+
   :config
-  (pdf-tools-install)
+  (my/pdf-tools-install)
   (setq-default pdf-view-display-size 'fitpage
                 pdf-annot-activate-created-annotations t
                 pdf-view-incompatible-modes '(display-line-numbers-mode)))
