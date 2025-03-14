@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("ba4f725d8e906551cfab8c5f67e71339f60fac11a8815f51051ddb8409ea6e5c"))
+   '("01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd"
+     "ba4f725d8e906551cfab8c5f67e71339f60fac11a8815f51051ddb8409ea6e5c"))
  '(delete-selection-mode nil)
  '(package-selected-packages
    '(auctex cape corfu eglot embark-consult expand-region go-mode

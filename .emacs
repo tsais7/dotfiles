@@ -46,8 +46,6 @@
 (setq visible-bell 0)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
-
-
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
                                 (awk-mode . "awk")
@@ -83,8 +81,10 @@
 
 (use-package vertico
   :config
+  (setq vertico-scroll-margin 0) 
+  (setq vertico-count 5)
   (setq vertico-cycle t)
-  (setq vertico-resize nil)
+  (setq vertico-resize t)
   (vertico-mode))
 
 (use-package marginalia
@@ -234,5 +234,5 @@
 (use-package gruber-darker-theme)
 (use-package material-theme)
 
-;; (load-theme 'gruber-darker t)
-(load-theme 'material t)
+(load-theme 'gruber-darker t)
+;; (load-theme 'material t)
