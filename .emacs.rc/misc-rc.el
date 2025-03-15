@@ -66,12 +66,8 @@
 ;; Handy key definition
 (define-key global-map "\M-Q" 'unfill-paragraph)
 
-(defun my-frame-settings (&optional frame)
-  "Apply custom settings to FRAME or current frame."
-  (with-selected-frame (or frame (selected-frame))
-    (when (member "Iosevka" (font-family-list))
-      (set-frame-font "Iosevka 14" nil t))))
-(unless (daemonp)
-  (my-frame-settings))
+(defun my-frame-settings (frame)
+  (select-frame frame)
+  (set-frame-font "TX-02 14" nil t))
 (add-hook 'after-make-frame-functions #'my-frame-settings)
 (add-hook 'server-after-make-frame-hook #'my-frame-settings)

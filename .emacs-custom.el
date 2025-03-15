@@ -13,7 +13,7 @@
             magit marginalia markdown-mode material-theme move-text
             multiple-cursors olivetti orderless paredit pdf-tools
             rust-mode smex typescript-mode vertico xterm-color
-            yasnippet-snippets))
+            yasnippet-snippets zenburn-theme))
  '(warning-suppress-types '((emacs))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -18,8 +18,6 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-;; (add-to-list 'default-frame-alist '(fullscreen . fullboth))
-;; (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -234,5 +232,5 @@
 (use-package gruber-darker-theme)
 (use-package material-theme)
 
-(load-theme 'gruber-darker t)
-;; (load-theme 'material t)
+;; (load-theme 'gruber-darker t)
+(load-theme 'material t)
