@@ -3,7 +3,8 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-c f") 'my-org-finder)
 
-(setq org-agenda-files (list "~/org/personal.org"))
+(setq org-directory "~/org")
+(setq org-agenda-files (list "~/org/scratch.org"))
 
 (defun my-org-finder ()
   (interactive)

@@ -65,9 +65,3 @@
 
 ;; Handy key definition
 (define-key global-map "\M-Q" 'unfill-paragraph)
-
-(defun my-frame-settings (frame)
-  (select-frame frame)
-  (set-frame-font "TX-02 14" nil t))
-(add-hook 'after-make-frame-functions #'my-frame-settings)
-(add-hook 'server-after-make-frame-hook #'my-frame-settings)
