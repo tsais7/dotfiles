@@ -11,9 +11,9 @@
    '(auctex cape corfu eglot embark-consult expand-region go-mode
             gruber-darker-theme haskell-mode ido-completing-read+
             magit marginalia markdown-mode material-theme move-text
-            multiple-cursors olivetti orderless paredit pdf-tools
-            rust-mode smex typescript-mode vertico xterm-color
-            yasnippet-snippets zenburn-theme))
+            multiple-cursors olivetti orderless org-modern paredit
+            pdf-tools rust-mode smex typescript-mode vertico
+            xterm-color yasnippet-snippets zenburn-theme))
  '(warning-suppress-types '((emacs))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
