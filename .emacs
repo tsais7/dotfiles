@@ -21,27 +21,18 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(blink-cursor-mode -1)
-(scroll-bar-mode -1)
-(xterm-mouse-mode 1)
-(column-number-mode 1)
-(pixel-scroll-precision-mode 1)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+
 (recentf-mode 1)
 (savehist-mode 1)
+(xterm-mouse-mode 1)
+(blink-cursor-mode 0)
+
 (global-hl-line-mode 1)
 (global-auto-revert-mode 1)
-(global-completion-preview-mode 1)
-
-(setq default-frame-alist
-      '((height . 44) (width  . 81) (left-fringe . 0) (right-fringe . 0)
-        (internal-border-width . 32) (vertical-scroll-bars . nil)
-        (bottom-divider-width . 0) (right-divider-width . 0)
-        (undecorated-round . t)))
-(modify-frame-parameters nil default-frame-alist)
-(setq-default pop-up-windows nil)
-
+(pixel-scroll-precision-mode 1)
 
 (global-set-key (kbd "C-c p") 'find-file-at-point)
 
@@ -54,6 +45,7 @@
             (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
+(setq-default pop-up-windows nil)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
 (setq-default c-basic-offset 4
@@ -243,12 +235,11 @@
 
 (use-package gruber-darker-theme)
 (use-package material-theme)
-(use-package nano-theme)
-
+(use-package nano-theme
+  :defer t)
 ;; (load-theme 'gruber-darker t)
 ;; (load-theme 'material t)
-(load-theme 'nano-dark)
-;; (load-theme 'nano-light)
+(load-theme 'nano-light t)
 
 (use-package org-modern
   :config
@@ -277,12 +268,7 @@
 (add-hook 'text-mode-hook            #'nano-modeline-text-mode)
 (add-hook 'org-mode-hook             #'nano-modeline-org-mode)
 (add-hook 'pdf-view-mode-hook        #'nano-modeline-pdf-mode)
-(add-hook 'mu4e-headers-mode-hook    #'nano-modeline-mu4e-headers-mode)
-(add-hook 'mu4e-view-mode-hook       #'nano-modeline-mu4e-message-mode)
-(add-hook 'elfeed-show-mode-hook     #'nano-modeline-elfeed-entry-mode)
-(add-hook 'elfeed-search-mode-hook   #'nano-modeline-elfeed-search-mode)
 (add-hook 'term-mode-hook            #'nano-modeline-term-mode)
-(add-hook 'xwidget-webkit-mode-hook  #'nano-modeline-xwidget-mode)
 (add-hook 'messages-buffer-mode-hook #'nano-modeline-message-mode)
 (add-hook 'org-capture-mode-hook     #'nano-modeline-org-capture-mode)
 (add-hook 'org-agenda-mode-hook      #'nano-modeline-org-agenda-mode)
