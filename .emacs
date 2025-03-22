@@ -34,8 +34,6 @@
 (global-auto-revert-mode 1)
 (pixel-scroll-precision-mode 1)
 
-(global-set-key (kbd "C-c p") 'find-file-at-point)
-
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
@@ -45,6 +43,7 @@
             (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
+(setq-default fill-column 120)
 (setq-default pop-up-windows nil)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
@@ -238,24 +237,11 @@
 (use-package nano-theme
   :defer t)
 ;; (load-theme 'gruber-darker t)
-;; (load-theme 'material t)
-(load-theme 'nano-light t)
+(load-theme 'material t)
+;; (load-theme 'nano-light t)
+;; (load-theme 'nano-dark t)
 
-(use-package org-modern
-  :config
-  (setq
-   ;; Edit settings
-   org-auto-align-tags nil
-   org-tags-column 0
-   org-catch-invisible-edits 'show-and-error
-   org-special-ctrl-a/e t
-   org-insert-heading-respect-content t
-
-   ;; Org styling, hide markup etc.
-   org-hide-emphasis-markers t
-   org-pretty-entities t
-   org-agenda-tags-column 0
-   org-ellipsis "…"))
+(use-package org-modern)
 
 (add-hook 'org-mode-hook #'org-modern-mode)
 (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
