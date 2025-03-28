@@ -1,3 +1,4 @@
+
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
@@ -18,6 +19,7 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
+(add-to-list 'default-frame-alist '(font . "TX-02 16"))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -43,6 +45,7 @@
             (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
 
 (setq visible-bell 0)
+(setq ring-bell-function 'ignore)
 (setq-default fill-column 120)
 (setq-default pop-up-windows nil)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
@@ -83,7 +86,7 @@
 (use-package vertico
   :config
   (setq vertico-scroll-margin 0)
-  (setq vertico-count 5)
+  (setq vertico-count 6)
   (setq vertico-cycle t)
   (setq vertico-resize t)
   (vertico-mode))
@@ -188,21 +191,23 @@
    (rust-mode . company-mode)))
 
 (use-package eglot
+  :defer t
   :hook
   (rust-mode . eglot-ensure)
+  (python-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '((c++-mode c-mode) "clangd"))
-  (add-to-list 'eglot-server-programs '((rust-ts-mode rust-mode) .
-                 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
+  (add-to-list 'eglot-server-programs
+               '((rust-ts-mode rust-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  )
 
 (use-package auctex
   :config
   (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
         TeX-source-correlate-start-server t)
-
   (global-set-key (kbd "C-c C-v") 'TeX-view)
-
   (add-hook 'TeX-after-compilation-finished-functions
             #'TeX-revert-document-buffer))
 
@@ -215,7 +220,6 @@
       (package-install 'pdf-tools))
     (pdf-tools-install t)
     (pdf-loader-install))
-
   :config
   (my/pdf-tools-install)
   (setq-default pdf-view-display-size 'fitpage
@@ -236,13 +240,13 @@
 (use-package material-theme)
 (use-package nano-theme
   :defer t)
+
 ;; (load-theme 'gruber-darker t)
 (load-theme 'material t)
 ;; (load-theme 'nano-light t)
 ;; (load-theme 'nano-dark t)
 
 (use-package org-modern)
-
 (add-hook 'org-mode-hook #'org-modern-mode)
 (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
@@ -258,3 +262,11 @@
 (add-hook 'messages-buffer-mode-hook #'nano-modeline-message-mode)
 (add-hook 'org-capture-mode-hook     #'nano-modeline-org-capture-mode)
 (add-hook 'org-agenda-mode-hook      #'nano-modeline-org-agenda-mode)
+
+(use-package vterm
+  :defer t)
+(use-package conda
+  :defer t)
+
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--simple-prompt -i")
