@@ -1,4 +1,5 @@
 alias l="ls -A --color=auto"
+alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
 alias mkdir="mkdir -p"
