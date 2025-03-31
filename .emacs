@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t; -*-
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
@@ -46,10 +45,10 @@
 
 (setq visible-bell 0)
 (setq ring-bell-function 'ignore)
-(setq-default fill-column 120)
-(setq-default pop-up-windows nil)
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
+(setq-default fill-column 120)
+(setq-default pop-up-windows nil)
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
                                 (awk-mode . "awk")
@@ -187,14 +186,13 @@
   :init
   (setq rust-mode-treesitter-derive t)
   :hook
-  ((rust-mode . eglot)
-   (rust-mode . company-mode)))
+  ((rust-mode . eglot)))
 
 (use-package eglot
   :defer t
   :hook
-  (rust-mode . eglot-ensure)
-  (python-mode . eglot-ensure)
+  ;; (rust-mode . eglot-ensure)
+  ;; (python-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
                '((c++-mode c-mode) "clangd"))
