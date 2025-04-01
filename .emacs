@@ -190,7 +190,7 @@
 
 (use-package eglot
   :defer t
-  :hook
+  ;; :hook
   ;; (rust-mode . eglot-ensure)
   ;; (python-mode . eglot-ensure)
   :config
