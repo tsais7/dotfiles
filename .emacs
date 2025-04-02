@@ -13,12 +13,12 @@
 
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 16" t)))
+    (set-frame-font "TX-02 14" t)))
 (add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-(add-to-list 'default-frame-alist '(font . "TX-02 16"))
+;; (add-to-list 'default-frame-alist '(font . "TX-02 14"))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -48,7 +48,7 @@
 (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
 (setq-default fill-column 120)
-(setq-default pop-up-windows nil)
+;; (setq-default pop-up-windows nil)
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
                                 (awk-mode . "awk")
