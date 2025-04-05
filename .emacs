@@ -196,10 +196,15 @@
   :config
   (add-to-list 'eglot-server-programs
                '((c++-mode c-mode) "clangd"))
+
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-  )
+
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (electric-indent-mode -1)))
 
 (use-package auctex
   :config
