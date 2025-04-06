@@ -56,3 +56,5 @@ test -r '$HOME/.opam/opam-init/init.sh' && . '/.opam/opam-init/init.sh' > /dev/n
 # END opam configuration
 
 
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc # ghcup-env

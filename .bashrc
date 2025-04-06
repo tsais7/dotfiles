@@ -53,3 +53,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+[ -f "/Users/st/.ghcup/env" ] && . "/Users/st/.ghcup/env" # ghcup-env
