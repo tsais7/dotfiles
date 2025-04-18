@@ -13,7 +13,7 @@
 
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 14" t)))
+    (set-frame-font "TX-02 16" t)))
 (add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -245,9 +245,9 @@
   :defer t)
 
 ;; (load-theme 'gruber-darker t)
-(load-theme 'material t)
+;; (load-theme 'material t)
 ;; (load-theme 'nano-light t)
-;; (load-theme 'nano-dark t)
+(load-theme 'nano-dark t)
 
 (use-package org-modern)
 (add-hook 'org-mode-hook #'org-modern-mode)
