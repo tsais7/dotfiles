@@ -18,7 +18,7 @@
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-;; (add-to-list 'default-frame-alist '(font . "TX-02 14"))
+(add-to-list 'default-frame-alist '(font . "TX-02 16"))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
