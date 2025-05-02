@@ -46,7 +46,7 @@
 
 (setq visible-bell 0)
 (setq ring-bell-function 'ignore)
-(setq backup-directory-alist '(("." . "~/.emacs_saves")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 (setq-default fill-column 120)
 ;; (setq-default pop-up-windows nil)
