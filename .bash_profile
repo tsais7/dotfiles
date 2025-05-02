@@ -1,7 +1,3 @@
-if [ -f ~/.bashrc ]; then
-        source ~/.bashrc
-fi
-
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -34,27 +30,37 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
+    
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/gir/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/gir/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/gir/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/gir/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
+
+. "$HOME/.cargo/env"
+
+export PATH=~/.npm-global/bin:$PATH
 
 export GOPATH="$(go env GOPATH)"
 export PATH="${PATH}:${GOPATH}/bin"
 
-. "$HOME/.cargo/env"
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
 
-# Added by `rbenv init` on Mon Oct  7 18:50:54 +08 2024
 eval "$(rbenv init - --no-rehash bash)"
 
-# npm
-export PATH=~/.npm-global/bin:$PATH
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-test -r '$HOME/.opam/opam-init/init.sh' && . '/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
-# END opam configuration
+test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true 
 
-
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc # ghcup-env
+[[ -f ~/.bashrc ]] && . ~/.bashrc
