@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -15,7 +16,7 @@
  '(package-selected-packages
    '(auctex cape compat conda corfu eglot embark-consult expand-region go-mode gruber-darker-theme haskell-mode
             ido-completing-read+ magit marginalia markdown-mode material-theme move-text multiple-cursors nano-modeline
-            nano-theme olivetti orderless org-modern paredit pdf-tools rust-mode smex typescript-mode vertico vterm
+            nano-theme olivetti orderless paredit pdf-tools rust-mode smex typescript-mode vertico vterm
             xterm-color yasnippet-snippets zenburn-theme))
  '(warning-suppress-types '((emacs))))
 (custom-set-faces

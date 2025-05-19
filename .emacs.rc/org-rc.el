@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
@@ -9,7 +10,6 @@
    ;; Edit settings
    org-auto-align-tags nil
    org-tags-column 0
-   org-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
 
@@ -19,11 +19,17 @@
    org-agenda-tags-column 0
    org-ellipsis "…")
 
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (buffer-face-set 'default '(:family "Iosevka"))
+;;             (buffer-face-set 'variable-pitch '(:family "Iosevka Aile"))
+;;             ))
+
 (add-hook 'org-mode-hook
           (lambda ()
-            (buffer-face-set 'default '(:family "Iosevka"))
-            (buffer-face-set 'variable-pitch '(:family "Iosevka Aile"))
-            (buffer-face-set 'org-modern-symbol '(:family "Iosevka"))))
+            (face-remap-add-relative 'default :family "Iosevka")
+            (face-remap-add-relative 'variable-pitch :family "Iosevka Aile")
+            (variable-pitch-mode 1)))
 
 (defun my-org-finder ()
   (interactive)

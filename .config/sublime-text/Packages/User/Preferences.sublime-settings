@@ -1,0 +1,15 @@
+{
+
+	"font_size": 14,
+	"font_face": "TX-02",
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages":
+	[
+		"LSP-clangd",
+		"Vintage",
+	],
+	"index_files": true,
+	"dark_theme": "Adaptive.sublime-theme",
+	"light_theme": "Default Dark.sublime-theme",
+	"color_scheme": "Mariana.sublime-color-scheme",
+}

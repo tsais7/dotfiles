@@ -9,6 +9,8 @@ alias d="ls -alh --color=auto"
 alias mkdir="mkdir -p"
 alias duh="du -sh ./*"
 
+alias gfp="git fetch && git pull"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~"

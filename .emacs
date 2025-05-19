@@ -250,9 +250,9 @@
 (load-theme 'nano-light t)
 ;; (load-theme 'nano-dark t)
 
-(use-package org-modern)
-(add-hook 'org-mode-hook #'org-modern-mode)
-(add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+;; (use-package org-modern)
+;; (add-hook 'org-mode-hook #'org-modern-mode)
+;; (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
 (use-package nano-modeline
   :config
