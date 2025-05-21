@@ -3,6 +3,7 @@ export CLICOLOR=1
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 alias l="ls -A --color=auto"
+alias a="ls -a --color=auto"
 alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
@@ -10,6 +11,7 @@ alias mkdir="mkdir -p"
 alias duh="du -sh ./*"
 
 alias gfp="git fetch && git pull"
+alias gcp="git add -u && git commit -m "+" && git push"
 
 alias ..="cd .."
 alias ...="cd ../.."
