@@ -247,8 +247,8 @@
 
 ;; (load-theme 'gruber-darker t)
 ;; (load-theme 'material t)
-(load-theme 'nano-light t)
-;; (load-theme 'nano-dark t)
+;; (load-theme 'nano-light t)
+(load-theme 'nano-dark t)
 
 ;; (use-package org-modern)
 ;; (add-hook 'org-mode-hook #'org-modern-mode)

@@ -1,3 +1,4 @@
+export PS1='\u@\h:\w\nλ> '
 export CLICOLOR=1
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
