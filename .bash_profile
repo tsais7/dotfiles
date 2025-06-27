@@ -9,6 +9,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
     export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+    export PATH="/Applications/Sublime Merge.app/Contents/SharedSupport/bin:$PATH"
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
