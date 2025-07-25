@@ -11,39 +11,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
     export PATH="/Applications/Sublime Merge.app/Contents/SharedSupport/bin:$PATH"
 
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-            . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-        else
-            export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 
 elif [[ "$(uname)" == "Linux" ]]; then
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
-    
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/gir/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/home/gir/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/gir/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/home/gir/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
+
 fi
 
 . "$HOME/.cargo/env"
