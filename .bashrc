@@ -30,3 +30,7 @@ alias st="subl" # sublime-text
 alias jsw="jekyll serve --watch"
 alias jb="jekyll build"
 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

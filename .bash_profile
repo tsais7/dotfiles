@@ -18,6 +18,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
 
 fi
 
+export PIP_REQUIRE_VIRTUALENV=true
+
 . "$HOME/.cargo/env"
 
 export PATH=~/.npm-global/bin:$PATH
