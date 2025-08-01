@@ -2,6 +2,7 @@ export PS1='\u@\h \[\033[34m\]\w\[\033[0m\]\nλ '
 export CLICOLOR=1
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
+alias cfgcp="cfg add -u && cfg commit -m "+" && cfg push"
 
 alias l="ls -A --color=auto"
 alias a="ls -a --color=auto"
