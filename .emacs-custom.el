@@ -14,10 +14,10 @@
  '(delete-selection-mode nil)
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(auctex cape compat conda corfu eglot embark-consult expand-region go-mode gruber-darker-theme haskell-mode
+   '(auctex cape compat corfu eglot embark-consult expand-region go-mode gruber-darker-theme haskell-mode
             ido-completing-read+ magit marginalia markdown-mode material-theme move-text multiple-cursors nano-modeline
-            nano-theme olivetti orderless paredit pdf-tools rust-mode smex typescript-mode vertico vterm
-            xterm-color yasnippet-snippets zenburn-theme))
+            nano-theme olivetti orderless paredit pdf-tools rust-mode smex typescript-mode vertico vterm xterm-color
+            yasnippet-snippets zenburn-theme))
  '(warning-suppress-types '((emacs))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

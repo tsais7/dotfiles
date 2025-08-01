@@ -14,12 +14,12 @@
 
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 16" t)))
+    (set-frame-font "TX-02 12" t)))
 (add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-(add-to-list 'default-frame-alist '(font . "TX-02 16"))
+;; (add-to-list 'default-frame-alist '(font . "TX-02 16"))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -48,8 +48,9 @@
 (setq ring-bell-function 'ignore)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+
+
 (setq-default fill-column 120)
-;; (setq-default pop-up-windows nil)
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
                                 (awk-mode . "awk")
@@ -63,7 +64,7 @@
 (setq dired-omit-files
       (concat dired-omit-files "\\|^\\..+$"))
 (setq-default dired-dwim-target t)
-(setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-alh --group-directories-first")
 (setq dired-mouse-drag-files t)
 
 (eval-when-compile
@@ -268,8 +269,6 @@
 (add-hook 'org-agenda-mode-hook      #'nano-modeline-org-agenda-mode)
 
 (use-package vterm
-  :defer t)
-(use-package conda
   :defer t)
 
 (setq python-shell-interpreter "ipython"
