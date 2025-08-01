@@ -25,7 +25,8 @@ alias zrm="sudo zypper rm"
 alias py="python3"
 alias python="python3"
 alias pip="pip3"
-alias st="subl" # sublime-text
+alias st="subl"
+alias sm="smerge"
 
 alias jsw="jekyll serve --watch"
 alias jb="jekyll build"

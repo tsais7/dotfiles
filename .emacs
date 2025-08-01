@@ -14,7 +14,7 @@
 
 (defun set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 12" t)))
+    (set-frame-font "TX-02 16" t)))
 (add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -48,8 +48,6 @@
 (setq ring-bell-function 'ignore)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
-
-
 (setq-default fill-column 120)
 (setq-default c-basic-offset 4
               c-default-style '((java-mode . "java")
@@ -66,6 +64,12 @@
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh --group-directories-first")
 (setq dired-mouse-drag-files t)
+
+(when (string= system-type "darwin")
+  (setq insert-directory-program "gls")
+  (setq dired-use-ls-dired t))
+
+
 
 (eval-when-compile
   (require 'use-package-ensure)
