@@ -11,6 +11,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
     export PATH="/Applications/Sublime Merge.app/Contents/SharedSupport/bin:$PATH"
 
+    export PATH="$HOME/.local/bin:$PATH"
+
 
 elif [[ "$(uname)" == "Linux" ]]; then
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
