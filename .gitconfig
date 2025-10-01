@@ -38,3 +38,4 @@
 
 [core]
 	editor = vim
+	autocrlf = false
