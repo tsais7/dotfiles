@@ -15,9 +15,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
 
 elif [[ "$(uname)" == "Linux" ]]; then
+    eval "$(fzf --bash)"
+
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
-
 fi
 
 export PIP_REQUIRE_VIRTUALENV=true

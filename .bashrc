@@ -9,6 +9,7 @@ alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
 alias mkdir="mkdir -p"
 alias duh="du -sh ./*"
+alias dud="du -hd 1 ."
 
 alias gfp="git fetch && git pull"
 alias gcp="git add -u && git commit -m "+" && git push"
@@ -25,9 +26,6 @@ alias zup="sudo zypper dup"
 alias zin="sudo zypper in"
 alias zrm="sudo zypper rm"
 
-alias py="python3"
-alias python="python3"
-alias pip="pip3"
 alias va="source .venv/bin/activate"
 
 alias dc="docker-compose"
