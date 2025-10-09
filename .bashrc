@@ -1,7 +1,6 @@
 export PS1='\u@\h \[\033[34m\]\w\[\033[0m\]\nλ '
 export CLICOLOR=1
 
-
 alias l="ls -A --color=auto --group-directories-first"
 alias a="ls -a --color=auto --group-directories-first"
 alias la="ls -A --color=auto"
@@ -37,6 +36,4 @@ alias sm="smerge"
 alias jsw="jekyll serve --watch"
 alias jb="jekyll build"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+eval "$(fzf --bash)"

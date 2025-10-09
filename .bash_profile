@@ -15,15 +15,13 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
 
 elif [[ "$(uname)" == "Linux" ]]; then
-    eval "$(fzf --bash)"
-
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-export PIP_REQUIRE_VIRTUALENV=true
-
 . "$HOME/.cargo/env"
+
+export PIP_REQUIRE_VIRTUALENV=true
 
 export PATH=~/.npm-global/bin:$PATH
 
@@ -38,6 +36,10 @@ eval "$(rbenv init - --no-rehash bash)"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
 test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true 
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
