@@ -13,7 +13,7 @@ alias dud="du -hd 1 ."
 
 alias gfp="git fetch && git pull"
 alias gcp="git add -u && git commit -m "+" && git push"
-alias gap="git add -u && git commit --amend && git push --force-with-lease"
+alias gap="git add -u && git commit --amend && git push -f"
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias cfgcp="cfg add -u && cfg commit -m "+" && cfg push"
