@@ -1,7 +1,7 @@
 syntax on
 filetype indent plugin on
 
-set statusline=%f\ %m\ \ \ \ %l/%L\ %c
+set statusline=%f\ %m\ \ \ \ %l:%c
 set nocompatible
 set tabstop=4
 set shiftwidth=4
