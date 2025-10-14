@@ -13,7 +13,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
     export PATH="$HOME/.local/bin:$PATH"
 
-
 elif [[ "$(uname)" == "Linux" ]]; then
     export JAVA_HOME="/usr/lib64/jvm/jre-11-openjdk"
     export PATH="$JAVA_HOME/bin:$PATH"
