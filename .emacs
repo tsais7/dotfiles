@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; ...  -*- lexical-binding: t -*-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
@@ -13,8 +13,8 @@
 (load custom-file)
 
 (defun set-default-font ()
-  (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 16" t)))
+  (when (member "TX-02" (font-family-list)))
+  (set-frame-font "TX-02 14" t))
 (add-hook 'after-init-hook 'set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -32,9 +32,9 @@
 (xterm-mouse-mode 1)
 (blink-cursor-mode 0)
 
-(global-hl-line-mode 1)
-(global-auto-revert-mode 1)
-(pixel-scroll-precision-mode 1)
+;; (global-hl-line-mode 1)
+;; (global-auto-revert-mode 1)
+;; (pixel-scroll-precision-mode 1)
 
 (add-hook 'prog-mode-hook
           (lambda ()
@@ -245,7 +245,6 @@
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package gruber-darker-theme)
 (use-package material-theme)
 (use-package nano-theme
   :defer t)

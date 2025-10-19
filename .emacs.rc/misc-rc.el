@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;;; ...  -*- lexical-binding: t -*-
 (require 'ansi-color)
 (require 'facemenu)
 
