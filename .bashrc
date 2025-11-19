@@ -6,9 +6,14 @@ alias a="gls -a --color=auto --group-directories-first"
 alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
+
 alias mkdir="mkdir -p"
+
 alias duh="du -sh ./*"
 alias dud="du -hd 1 ."
+
+alias py="python3"
+alias python="python3"
 
 alias gfp="git fetch && git pull"
 alias gcp="git add -u && git commit -m "+" && git push"
@@ -32,8 +37,5 @@ alias k="kubectl"
 
 alias st="subl"
 alias sm="smerge"
-
-alias jsw="jekyll serve --watch"
-alias jb="jekyll build"
 
 eval "$(fzf --bash)"
