@@ -7,6 +7,8 @@ alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
 
+alias makej="make -j$(sysctl -n hw.ncpu)"
+
 alias mkdir="mkdir -p"
 
 alias duh="du -sh ./*"
