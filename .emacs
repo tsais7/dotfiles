@@ -32,8 +32,8 @@
 (xterm-mouse-mode 1)
 (blink-cursor-mode 0)
 
-;; (global-hl-line-mode 1)
-;; (global-auto-revert-mode 1)
+(global-hl-line-mode 1)
+(global-auto-revert-mode 1)
 ;; (pixel-scroll-precision-mode 1)
 
 (add-hook 'prog-mode-hook
@@ -245,14 +245,14 @@
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package material-theme)
+(use-package material-theme) 
 (use-package nano-theme
   :defer t)
 
 ;; (load-theme 'gruber-darker t)
-(load-theme 'material t)
+;; (load-theme 'material t) 
 ;; (load-theme 'nano-light t)
-;; (load-theme 'nano-dark t)
+(load-theme 'nano-dark t)
 
 ;; (use-package org-modern)
 ;; (add-hook 'org-mode-hook #'org-modern-mode)

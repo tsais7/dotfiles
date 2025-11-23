@@ -1,13 +1,11 @@
 export PS1='\u@\h \[\033[34m\]\w\[\033[0m\]\nλ '
 export CLICOLOR=1
 
-alias l="gls -A --color=auto --group-directories-first"
-alias a="gls -a --color=auto --group-directories-first"
+alias l="ls -A --color=auto --group-directories-first"
+alias a="ls -a --color=auto --group-directories-first"
 alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
-
-alias makej="gmake -j$(sysctl -n hw.ncpu)"
 
 alias mkdir="mkdir -p"
 
