@@ -25,11 +25,11 @@
 ;;             (buffer-face-set 'variable-pitch '(:family "Iosevka Aile"))
 ;;             ))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (face-remap-add-relative 'default :family "Iosevka")
-            (face-remap-add-relative 'variable-pitch :family "Iosevka Aile")
-            (variable-pitch-mode 1)))
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (face-remap-add-relative 'default :family "Iosevka")
+;;             (face-remap-add-relative 'variable-pitch :family "Iosevka Aile")
+;;             (variable-pitch-mode 1)))
 
 (defun my-org-finder ()
   (interactive)
