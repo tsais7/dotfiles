@@ -2,8 +2,12 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-
 (package-initialize)
+
+(eval-when-compile
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t))
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc-rc.el")
@@ -12,81 +16,41 @@
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file)
 
-(defun set-default-font ()
-  (when (member "TX-02" (font-family-list)))
-  (set-frame-font "TX-02 16" t))
-(add-hook 'after-init-hook 'set-default-font)
+(defun rc/set-default-font ()
+  (when (member "TX-02" (font-family-list))
+    (set-frame-font "TX-02 18" t)))
+
+(add-hook 'after-init-hook #'rc/set-default-font)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
-;; (add-to-list 'default-frame-alist '(font . "TX-02 16"))
-
-(fset 'yes-or-no-p 'y-or-n-p)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
+(blink-cursor-mode 0)
 
 (recentf-mode 1)
 (savehist-mode 1)
 (xterm-mouse-mode 1)
-(blink-cursor-mode 0)
-
+(column-number-mode 1)
 (global-hl-line-mode 1)
 (global-auto-revert-mode 1)
-;; (pixel-scroll-precision-mode 1)
+
+(global-set-key (kbd "C-,") #'duplicate-dwim)
+(global-set-key (kbd "C-x C-g") #'find-file-at-point)
 
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
             (setq display-line-numbers-width-start 4)
             (setq display-line-numbers-type 'relative)
-            (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-            (set-face-attribute 'font-lock-type-face nil :slant 'italic)))
+            (face-remap-add-relative 'font-lock-keyword-face :slant 'italic)
+            (face-remap-add-relative 'font-lock-type-face :slant 'italic)))
 
-(setq visible-bell 0)
-(setq ring-bell-function 'ignore)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
-(setq-default fill-column 120)
-(setq-default c-basic-offset 4
-              c-default-style '((java-mode . "java")
-                                (awk-mode . "awk")
-                                (other . "bsd")))
-
-(add-hook 'c-mode-hook (lambda ()
-                         (interactive)
-                         (c-toggle-comment-style -1)))
-
-(require 'dired-x)
-(setq dired-omit-files
-      (concat dired-omit-files "\\|^\\..+$"))
-(setq-default dired-dwim-target t)
-(setq dired-listing-switches "-alh --group-directories-first")
-(setq dired-mouse-drag-files t)
-
-(when (string= system-type "darwin")
-  (setq insert-directory-program "gls")
-  (setq dired-use-ls-dired t))
-
-
-
-(eval-when-compile
-  (require 'use-package-ensure)
-  (setq use-package-always-ensure t)
-  (setq use-package-expand-minimally t))
-
-;; (use-package smex
-;;   :bind (("M-x" . 'smex)
-;; 	     ("M-X" . 'smex-major-mode-commands))
-;;   :config (smex-initialize))
-
-;; (use-package ido-completing-read+
-;;   :config
-;;   (ido-mode 1)
-;;   (ido-everywhere 1)
-;;   ;; (ido-ubiquitous-mode 1)
-;;   )
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'c-mode-hook (lambda () (c-toggle-comment-style -1)))
+(add-hook 'c++-mode-hook (lambda ()(electric-indent-mode -1)))
 
 (use-package vertico
   :config
@@ -108,6 +72,7 @@
 (use-package consult
   :bind (("C-x b" . consult-buffer)
          ("C-c r" . consult-imenu)
+         ("M-y"   . consult-yank-pop)
          ("M-s g" . consult-grep)
          ("M-s f" . consult-find)
          ("M-s o" . consult-outline)
@@ -136,20 +101,18 @@
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package paredit
-  :hook ((emacs-lisp-mode . enable-paredit-mode)
-         (lisp-mode . enable-paredit-mode)
-         (common-lisp-mode . enable-paredit-mode)
-         (scheme-mode . enable-paredit-mode))
-  :bind  (:map paredit-mode-map
-               ("M-s" . nil)))
+  :hook ((emacs-lisp-mode  . enable-paredit-mode)
+         (lisp-mode        . enable-paredit-mode)
+         (scheme-mode      . enable-paredit-mode))
+  :bind  (:map paredit-mode-map ("M-s" . nil)))
 
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
-         ("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)
-         ("C-\"" . mc/skip-to-next-like-this)
-         ("C-:" . mc/skip-to-previous-like-this)))
+         ("C->"         . mc/mark-next-like-this)
+         ("C-<"         . mc/mark-previous-like-this)
+         ("C-c C-<"     . mc/mark-all-like-this)
+         ("C-\""        . mc/skip-to-next-like-this)
+         ("C-:"         . mc/skip-to-previous-like-this)))
 
 (use-package magit
   :config (setq magit-auto-revert-mode nil)
@@ -169,68 +132,50 @@
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 
-(use-package which-key
-  :config (which-key-mode))
 
-(use-package typescript-mode)
-(use-package go-mode)
-
-(use-package markdown-mode
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
-
-(use-package haskell-mode
-  :hook ((haskell-mode . haskell-indent-mode)
-         (haskell-mode . interactive-haskell-mode)
-         (haskell-mode . haskell-doc-mode)
-         (haskell-mode . hindent-mode))
-  :config
-  (setq haskell-process-type 'cabal-new-repl)
-  (setq haskell-process-log t))
-
-(use-package rust-mode
-  :init
-  (setq rust-mode-treesitter-derive t)
-  :hook
-  ((rust-mode . eglot)))
 
 (use-package eglot
   :defer t
-  ;; :hook
-  ;; (rust-mode . eglot-ensure)
-  ;; (python-mode . eglot-ensure)
   :config
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-to-list 'eglot-server-programs
-               '((c++-mode c-mode) "clangd"))
+               '((rust-ts-mode rust-mode) .
+                 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
 
-  (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+(use-package rust-mode
+  :hook (rust-mode . eglot)
+  :init (setq rust-mode-treesitter-derive t))
 
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
+(use-package markdown-mode
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setq markdown-header-scaling nil)
+  (setq markdown-fontify-code-blocks-natively t)
 
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (electric-indent-mode -1)))
+  (set-face-attribute 'markdown-header-face nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-1 nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-2 nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-3 nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-4 nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-5 nil :inherit 'default :height 1.0)
+  (set-face-attribute 'markdown-header-face-6 nil :inherit 'default :height 1.0))
+
+
 
 (use-package auctex
   :config
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-source-correlate-start-server t)
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (setq TeX-source-correlate-start-server t)
   (global-set-key (kbd "C-c C-v") 'TeX-view)
-  (add-hook 'TeX-after-compilation-finished-functions
-            #'TeX-revert-document-buffer))
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
 (use-package pdf-tools
   :magic ("%PDF" . pdf-view-mode)
   :mode ("\\.pdf\\'" . pdf-view-mode)
-  :init
-  (defun my/pdf-tools-install ()
-    (unless (package-installed-p 'pdf-tools)
-      (package-install 'pdf-tools))
-    (pdf-tools-install t)
-    (pdf-loader-install))
   :config
-  (my/pdf-tools-install)
+  (pdf-tools-install t)
+  (pdf-loader-install)
   (setq-default pdf-view-display-size 'fitpage
                 pdf-annot-activate-created-annotations t
                 pdf-view-incompatible-modes '(display-line-numbers-mode)))
@@ -245,34 +190,5 @@
   :config
   (setq olivetti-minimum-body-width 100))
 
-(use-package material-theme) 
-(use-package nano-theme
-  :defer t)
-
-;; (load-theme 'gruber-darker t)
-(load-theme 'material t) 
-;; (load-theme 'nano-light t)
-;; (load-theme 'nano-dark t)
-
-;; (use-package org-modern)
-;; (add-hook 'org-mode-hook #'org-modern-mode)
-;; (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
-
-(use-package nano-modeline
-  :config
-  (nano-modeline-text-mode t))
-
-(add-hook 'prog-mode-hook            #'nano-modeline-prog-mode)
-(add-hook 'text-mode-hook            #'nano-modeline-text-mode)
-(add-hook 'org-mode-hook             #'nano-modeline-org-mode)
-(add-hook 'pdf-view-mode-hook        #'nano-modeline-pdf-mode)
-(add-hook 'term-mode-hook            #'nano-modeline-term-mode)
-(add-hook 'messages-buffer-mode-hook #'nano-modeline-message-mode)
-(add-hook 'org-capture-mode-hook     #'nano-modeline-org-capture-mode)
-(add-hook 'org-agenda-mode-hook      #'nano-modeline-org-agenda-mode)
-
-(use-package vterm
-  :defer t)
-
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "--simple-prompt -i")
+(use-package doom-themes
+  :config (load-theme 'doom-oceanic-next t))
