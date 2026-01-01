@@ -12,8 +12,10 @@
  '(delete-selection-mode nil)
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(auctex cape corfu doom-themes embark-consult expand-region magit marginalia markdown-mode move-text multiple-cursors
-            olivetti orderless paredit pdf-tools rust-mode vertico xterm-color yasnippet-snippets))
+   '(auctex cape corfu doom-themes eglot embark-consult expand-region
+            magit marginalia markdown-mode move-text multiple-cursors
+            olivetti orderless paredit pdf-tools rust-mode vertico
+            xterm-color yasnippet-snippets))
  '(warning-suppress-types '((emacs))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

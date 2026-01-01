@@ -1,4 +1,5 @@
 ;;; ...  -*- lexical-binding: t -*-
+(require 'ansi-color)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
@@ -22,6 +23,23 @@
 
 (add-hook 'after-init-hook #'rc/set-default-font)
 
+
+(setq-default inhibit-splash-screen t
+              make-backup-files nil
+              tab-width 4
+              indent-tabs-mode nil
+              compilation-scroll-output t)
+
+(setq use-short-answers t
+      kill-do-not-save-duplicates t
+      scroll-preserve-screen-position t
+      isearch-lazy-count t
+      isearch-allow-scroll t
+      visible-bell nil
+      ring-bell-function #'ignore
+      confirm-kill-emacs #'y-or-n-p
+      backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
@@ -40,6 +58,25 @@
 (global-set-key (kbd "C-,") #'duplicate-dwim)
 (global-set-key (kbd "C-x C-g") #'find-file-at-point)
 
+
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--simple-prompt -i")
+
+(require 'dired-x)
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$")
+      dired-dwim-target t
+      dired-listing-switches "-alh --group-directories-first"
+      dired-mouse-drag-files t)
+
+(when (eq system-type "darwin")
+  (setq insert-directory-program "gls"
+        dired-use-ls-dired t))
+
+(setq c-basic-offset 4
+      c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (other . "bsd")))
+
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
@@ -50,7 +87,16 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'c-mode-hook (lambda () (c-toggle-comment-style -1)))
-(add-hook 'c++-mode-hook (lambda ()(electric-indent-mode -1)))
+
+
+(setq treesit-language-source-alist
+      '((rust "https://github.com/tree-sitter/tree-sitter-rust")
+        (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (bash "https://github.com/tree-sitter/tree-sitter-bash")))
+
+(setq treesit-auto-install 'prompt)
+
 
 (use-package vertico
   :config
