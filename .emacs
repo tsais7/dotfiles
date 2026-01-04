@@ -37,7 +37,6 @@
       isearch-allow-scroll t
       visible-bell nil
       ring-bell-function #'ignore
-      confirm-kill-emacs #'y-or-n-p
       backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -186,7 +185,10 @@
   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
   (add-to-list 'eglot-server-programs
                '((rust-ts-mode rust-mode) .
-                 ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))))
+                 ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (setq eglot-ignored-server-capabilites '(:documentFormattingProvider
+                                           :documentRangeFormattingProvider
+                                           :documentOnTypeFormattingProvider)))
 
 (use-package rust-mode
   :hook (rust-mode . eglot)
