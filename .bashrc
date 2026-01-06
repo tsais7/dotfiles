@@ -1,7 +1,9 @@
 export PS1='\u@\h \[\033[34m\]\w\[\033[0m\]\nλ '
 export CLICOLOR=1
 
-alias ls="gls"
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias ls="gls";
+fi
 alias l="ls -A --color=auto --group-directories-first"
 alias a="ls -a --color=auto --group-directories-first"
 alias la="ls -A --color=auto"
