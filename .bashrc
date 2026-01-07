@@ -15,6 +15,11 @@ alias mkdir="mkdir -p"
 alias duh="du -sh ./*"
 alias dud="du -hd 1 ."
 
+alias cxx='clang++ -std=c++20 -Wall -Wextra -g'
+alias cxxo='clang++ -std=c++20 -O3 -march=native'
+alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
+alias cxxt='clang++ -std=c++20 -fsanitize=thread'
+
 alias py="python3"
 alias python="python3"
 
