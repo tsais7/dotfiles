@@ -239,4 +239,7 @@
   (setq olivetti-minimum-body-width 100))
 
 (use-package doom-themes
-  :config (load-theme 'doom-oceanic-next t))
+  :config
+  ;; (load-theme 'doom-oceanic-next t)
+   (load-theme 'doom-monokai-pro t)
+  )
