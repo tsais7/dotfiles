@@ -19,7 +19,7 @@
 
 (defun rc/set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 14" t)))
+    (set-frame-font "TX-02 16" t)))
 
 (add-hook 'after-init-hook #'rc/set-default-font)
 
@@ -79,8 +79,8 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (display-line-numbers-mode 1)
+            (setq display-line-numbers-width 3)
             (setq display-line-numbers-width-start 4)
-            (setq display-line-numbers-type 'relative)
             (face-remap-add-relative 'font-lock-keyword-face :slant 'italic)
             (face-remap-add-relative 'font-lock-type-face :slant 'italic)))
 
