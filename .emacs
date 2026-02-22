@@ -120,6 +120,7 @@
          ("M-y"   . consult-yank-pop)
          ("M-s g" . consult-grep)
          ("M-s f" . consult-find)
+         ("M-s p" . consult-project-buffer)
          ("M-s o" . consult-outline)
          ("M-s l" . consult-line)))
 
@@ -214,6 +215,7 @@
 (use-package auctex
   :config
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (setq TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view)))
   (setq TeX-source-correlate-start-server t)
   (global-set-key (kbd "C-c C-v") 'TeX-view)
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
