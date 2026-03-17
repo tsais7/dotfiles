@@ -19,7 +19,7 @@
 
 (defun rc/set-default-font ()
   (when (member "TX-02" (font-family-list))
-    (set-frame-font "TX-02 16" t)))
+    (set-frame-font "TX-02 12" t)))
 
 (add-hook 'after-init-hook #'rc/set-default-font)
 
