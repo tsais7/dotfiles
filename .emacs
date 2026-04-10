@@ -57,7 +57,6 @@
 (global-set-key (kbd "C-,") #'duplicate-dwim)
 (global-set-key (kbd "C-x C-g") #'find-file-at-point)
 
-
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt -i")
 
@@ -194,23 +193,6 @@
 (use-package rust-mode
   :hook (rust-mode . eglot)
   :init (setq rust-mode-treesitter-derive t))
-
-(use-package markdown-mode
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
-  :config
-  (setq markdown-header-scaling nil)
-  (setq markdown-fontify-code-blocks-natively t)
-
-  (set-face-attribute 'markdown-header-face nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-1 nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-2 nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-3 nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-4 nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-5 nil :inherit 'default :height 1.0)
-  (set-face-attribute 'markdown-header-face-6 nil :inherit 'default :height 1.0))
-
-
 
 (use-package auctex
   :config
