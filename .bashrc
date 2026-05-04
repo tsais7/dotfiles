@@ -3,6 +3,16 @@ export CLICOLOR=1
 
 if [[ "$(uname)" == "Darwin" ]]; then
     alias ls="gls";
+    alias cxx='clang++ -std=c++20 -Wall -Wextra -g'
+    alias cxxo='clang++ -std=c++20 -O3 -march=native'
+    alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
+    alias cxxt='clang++ -std=c++20 -fsanitize=thread'
+else 
+    alias cxx='g++ -std=c++20 -Wall -Wextra -g'
+    alias cxxo='g++ -std=c++20 -O3 -march=native'
+    alias cxxs='g++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
+    alias cxxt='g++ -std=c++20 -fsanitize=thread'
+
 fi
 alias l="ls -A --color=auto --group-directories-first"
 alias a="ls -a --color=auto --group-directories-first"
@@ -15,10 +25,6 @@ alias mkdir="mkdir -p"
 alias duh="du -sh ./*"
 alias dud="du -hd 1 ."
 
-alias cxx='clang++ -std=c++20 -Wall -Wextra -g'
-alias cxxo='clang++ -std=c++20 -O3 -march=native'
-alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
-alias cxxt='clang++ -std=c++20 -fsanitize=thread'
 
 alias py="python3"
 alias python="python3"

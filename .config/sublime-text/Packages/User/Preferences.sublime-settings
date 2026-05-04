@@ -1,6 +1,6 @@
 {
 
-	"font_size": 11,
+	"font_size": 13,
 	"font_face": "TX-02",
 	"index_files": true,
 	"hardware_acceleration": "opengl",
