@@ -57,6 +57,8 @@
 (global-set-key (kbd "C-,") #'duplicate-dwim)
 (global-set-key (kbd "C-x C-g") #'find-file-at-point)
 
+(setq markdown-fontify-code-blocks-natively t)
+
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "--simple-prompt -i")
 
@@ -80,8 +82,9 @@
             (display-line-numbers-mode 1)
             (setq display-line-numbers-width 3)
             (setq display-line-numbers-width-start 4)
-            (face-remap-add-relative 'font-lock-keyword-face :slant 'italic)
-            (face-remap-add-relative 'font-lock-type-face :slant 'italic)))
+            ;; (face-remap-add-relative 'font-lock-keyword-face :slant 'italic)
+            ;; (face-remap-add-relative 'font-lock-type-face :slant 'italic)
+            ))
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 (add-hook 'c-mode-hook (lambda () (c-toggle-comment-style -1)))
@@ -224,6 +227,7 @@
 
 (use-package doom-themes
   :config
-  ;; (load-theme 'doom-oceanic-next t)
-   (load-theme 'doom-monokai-pro t)
+  (load-theme 'doom-oceanic-next t)
+  ;; (load-theme 'doom-monokai-pro t)
+  ;; (load-theme 'doom-flatwhite t)
   )
