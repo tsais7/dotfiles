@@ -35,6 +35,7 @@ alias gap="git add -u && git commit --amend && git push -f"
 
 alias cfg="git --git-dir=$HOME/.cfg --work-tree=$HOME"
 alias cfgcp="cfg add -u && cfg commit -m "+" && cfg push"
+alias cfgfp="cfg fetch && cfg pull"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -43,6 +44,7 @@ alias ~="cd ~"
 alias zup="sudo zypper dup"
 alias zin="sudo zypper in"
 alias zrm="sudo zypper rm"
+alias zrf="sudo zypper refresh"
 
 alias va="source .venv/bin/activate"
 
