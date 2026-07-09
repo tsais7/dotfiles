@@ -7,6 +7,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     alias cxxo='clang++ -std=c++20 -O3 -march=native'
     alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
     alias cxxt='clang++ -std=c++20 -fsanitize=thread'
+    alias caf='caffeinate -d &'
 else 
     alias cxx='g++ -std=c++20 -Wall -Wextra -g'
     alias cxxo='g++ -std=c++20 -O3 -march=native'

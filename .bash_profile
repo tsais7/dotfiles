@@ -26,3 +26,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/st/.antigravity-ide/antigravity-ide/bin:$PATH"
