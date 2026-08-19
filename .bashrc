@@ -1,4 +1,4 @@
-export PS1='\u@\h \[\033[34m\]\w\[\033[0m\]\nλ '
+export PS1='\[\033[34m\]\w\[\033[0m\]\n$ '
 export CLICOLOR=1
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -55,3 +55,5 @@ alias st="subl"
 alias sm="smerge"
 
 eval "$(fzf --bash)"
+
+[ -f "/home/gir/.ghcup/env" ] && . "/home/gir/.ghcup/env" # ghcup-env
