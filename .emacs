@@ -227,6 +227,6 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'doom-oceanic-next t)
-  ;; (load-theme 'doom-monokai-pro t)
+  ;; (load-theme 'doom-oceanic-next t)
+  (load-theme 'doom-monokai-pro t)
   )
