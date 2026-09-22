@@ -47,6 +47,8 @@
 (scroll-bar-mode 0)
 (blink-cursor-mode 0)
 
+(which-key-mode 1)
+
 (recentf-mode 1)
 (savehist-mode 1)
 (xterm-mouse-mode 1)
