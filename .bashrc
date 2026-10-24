@@ -2,16 +2,16 @@ export PS1='\[\033[34m\]\w\[\033[0m\]\n$ '
 export CLICOLOR=1
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    alias cxx='clang++ -std=c++20 -Wall -Wextra -g'
-    alias cxxo='clang++ -std=c++20 -O3 -march=native'
-    alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
-    alias cxxt='clang++ -std=c++20 -fsanitize=thread'
+    alias cxx='clang++ -std=c++26 -Wall -Wextra -g'
+    alias cxxo='clang++ -std=c++26 -O3 -march=native'
+    alias cxxs='clang++ -std=c++26 -Wall -Wextra -fsanitize=address,undefined'
+    alias cxxt='clang++ -std=c++26 -fsanitize=thread'
     alias caf='caffeinate -d &'
 else 
-    alias cxx='g++ -std=c++20 -Wall -Wextra -g'
-    alias cxxo='g++ -std=c++20 -O3 -march=native'
-    alias cxxs='g++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
-    alias cxxt='g++ -std=c++20 -fsanitize=thread'
+    alias cxx='g++ -std=c++26 -Wall -Wextra -g'
+    alias cxxo='g++ -std=c++26 -O3 -march=native'
+    alias cxxs='g++ -std=c++26 -Wall -Wextra -fsanitize=address,undefined'
+    alias cxxt='g++ -std=c++26 -fsanitize=thread'
 
 fi
 alias l="ls -A --color=auto"
