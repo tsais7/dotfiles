@@ -2,7 +2,6 @@ export PS1='\[\033[34m\]\w\[\033[0m\]\n$ '
 export CLICOLOR=1
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    alias ls="gls";
     alias cxx='clang++ -std=c++20 -Wall -Wextra -g'
     alias cxxo='clang++ -std=c++20 -O3 -march=native'
     alias cxxs='clang++ -std=c++20 -Wall -Wextra -fsanitize=address,undefined'
@@ -15,8 +14,8 @@ else
     alias cxxt='g++ -std=c++20 -fsanitize=thread'
 
 fi
-alias l="ls -A --color=auto --group-directories-first"
-alias a="ls -a --color=auto --group-directories-first"
+alias l="ls -A --color=auto"
+alias a="ls -a --color=auto" 
 alias la="ls -A --color=auto"
 alias ll="ls -al --color=auto"
 alias d="ls -alh --color=auto"
