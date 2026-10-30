@@ -7,6 +7,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     alias cxxs='clang++ -std=c++26 -Wall -Wextra -fsanitize=address,undefined'
     alias cxxt='clang++ -std=c++26 -fsanitize=thread'
     alias caf='caffeinate -d &'
+
+
 else 
     alias cxx='g++ -std=c++26 -Wall -Wextra -g'
     alias cxxo='g++ -std=c++26 -O3 -march=native'
@@ -57,3 +59,6 @@ alias sm="smerge"
 eval "$(fzf --bash)"
 
 [ -f "/home/gir/.ghcup/env" ] && . "/home/gir/.ghcup/env" # ghcup-env
+
+# opencode
+export PATH=/home/gir/.opencode/bin:$PATH
